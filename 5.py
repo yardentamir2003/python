@@ -1,3 +1,3 @@
 celsius = input("celsius degrees: ")
-fahrenheit = int(celsius) + int(32)
+fahrenheit = float(celsius)*1.8 + int(32)
 print("fahrenheit: ", fahrenheit)
