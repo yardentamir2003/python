@@ -11,6 +11,5 @@ while row < height:
         print("*", end="")
         col = col + 1
 
-
     print()
     row = row + 1
