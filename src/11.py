@@ -11,12 +11,9 @@ while True:
         continue
     if smallest is None or number < smallest:
         smallest = number
-    else:
-        smallest = smallest
+
     if biggest is None or number > biggest:
         biggest = number
-    else:
-        biggest = biggest
 
 print("minimum: ", smallest)
 print("maximum: ", biggest)

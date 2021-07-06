@@ -1,6 +1,6 @@
 height = input("height: ")
 height = int(height)
-for i in range(1, height+1):
-    for j in range(1, i+1):
-        print(j, end="")
+for row in range(height):
+    for col in range(row+1):
+        print(col+1, end="")
     print()

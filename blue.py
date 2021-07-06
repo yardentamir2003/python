@@ -2,7 +2,7 @@ story = []
 while True:
     line = str(input("Enter line: "))
 
-    if line.__contains__("blue"):
+    if "blue" in line:
         continue
 
     if line == "quit":

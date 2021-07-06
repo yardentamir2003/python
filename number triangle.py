@@ -1,7 +1,7 @@
 height = input("Enter height: ")
 height = int(height)
-row = 0
-while row < height:
+
+for row in range(height):
     space = 2*height-2*row
     while space > 0:
         print(end=" ")
