@@ -1,4 +1,4 @@
-def draw_triangle(height, row):
+def draw_row(height, row):
     draw_spaces(height, row)
     draw_increasing_numbers(row)
     draw_decreasing_numbers(row)
@@ -27,11 +27,11 @@ def draw_decreasing_numbers(row):
     print()
 
 
-def main():
+def draw_triangle():
     height = input("Enter height: ")
     height = int(height)
     for row in range(height):
-        draw_triangle(height, row)
+        draw_row(height, row)
 
 
-main()
+draw_triangle()
