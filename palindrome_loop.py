@@ -1,6 +1,15 @@
 import re
+
 line = str(input("Enter a sentence: "))
 line = line.lower()
 
 new = re.sub('[^a-z]', '', line)
-for letter in line:
+index = 0
+for letter in range(len(new)):
+    if new[index] != new[len(new) - index - 1]:
+        print("it's not a palindrome.")
+        exit(1)
+    else:
+        index = index + 1
+
+print("it's a palindrome.")
