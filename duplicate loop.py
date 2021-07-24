@@ -10,10 +10,10 @@ while "duplicate" in line:
     end_word = line.find(' ', times_end + 1)
     end_word = int(end_word)
     if end_word == -1:
-        new_string = line[0:duplicate_begin] + (line[duplicate_end + 3:] + (' ')) * times
+        new_string = line[0:duplicate_begin] + (line[times_end+1:]+ ' ') * times
         line = new_string
     else:
-        new_string = line[0:duplicate_begin] + line[duplicate_end + 3:end_word + 1] * times + line[end_word + 1:]
+        new_string = line[0:duplicate_begin] + line[times_end+1:end_word + 1] * times + line[end_word + 1:]
         line = new_string
 
 print(line)
