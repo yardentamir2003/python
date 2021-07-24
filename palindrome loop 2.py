@@ -5,7 +5,7 @@ line = line.lower()
 
 new = re.sub('[^a-z]', '', line)
 index = 0
-for letter in range(len(new)):
+for index in range(int(len(new) / 2)):
     if new[index] == new[len(new) - index - 1]:
         index = index + 1
         continue
