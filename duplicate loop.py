@@ -1,6 +1,7 @@
 line = str(input("Enter a sentence: "))
 
 while "duplicate" in line:
+    line=cxcc(line)
     duplicate_begin = line.find("duplicate")
     duplicate_end = line.find(' ', duplicate_begin)
     times_begin = duplicate_end+1
@@ -17,3 +18,9 @@ while "duplicate" in line:
         line = new_string
 
 print(line)
+
+
+
+a="hello"
+b=dupli(a)
+print(b)
