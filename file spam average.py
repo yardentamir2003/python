@@ -10,7 +10,5 @@ for line in file:
         all_numbers.append(num)
     count = count + 1
 
-count = int(count)
-
 average = sum(all_numbers) / count
 print("Average spam confidence: ", average)
