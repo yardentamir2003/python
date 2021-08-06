@@ -10,7 +10,12 @@ def change_file():
 
 
 def replace_ugly(input_string):
-    output_string = input_string.replace(" ugly", " great")
+    output_string = input_string.replace(" ugly ", " great ")
+    output_string = output_string.replace(" ugly, ", " great, ")
+    output_string = output_string.replace(" ugly. ", " great. ")
+    output_string = output_string.replace(" ugly?", " great?")
+    output_string = output_string.replace(" ugly!", " great!")
+
     return output_string
 
 
