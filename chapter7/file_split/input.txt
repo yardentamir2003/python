@@ -1,0 +1,12 @@
+name: indigo.txt
+My name is Indigo Montoya.
+You have killed my father.
+Prepare to die.
+===
+name: zombie.txt
+In your head.
+In your head.
+Zombie
+Zombie
+Aye yaa yahh
+===
