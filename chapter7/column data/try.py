@@ -4,19 +4,20 @@ def read_lines(column_name):
     first_line = True
     for line in file_input:
         if first_line:
+            columns_names = parse_line(first_line)
             first_line = False
             continue
         else:
             columns = parse_line(line)
-            if column_name == "first name":
+            if column_name == columns_names[0]:
                 answer = columns[0]
-            elif column_name == "last name":
+            elif column_name == columns_names[1]:
                 answer = columns[1]
-            elif column_name == "age":
+            elif column_name == columns_names[2]:
                 answer = columns[2]
-            elif column_name == "street number" or column_name == "street":
+            elif column_name == columns_names[3]:
                 answer = columns[3]
-            elif column_name == "weight":
+            elif column_name == columns_names[4]:
                 answer = columns[4]
         answers.append(answer)
     return answers
@@ -42,7 +43,6 @@ def parse_line(line):
             no_quotes = False
             with_quotes = False
 
-
         elif wait_for_start:
             wait_for_start = False
             if char == '"':
@@ -62,8 +62,6 @@ def parse_line(line):
             else:
                 word = word + char
 
-
-
         elif no_quotes:
             if char == ',':
                 words.append(word)
@@ -73,7 +71,6 @@ def parse_line(line):
                 with_quotes = False
             else:
                 word = word + char
-
 
     return words
 

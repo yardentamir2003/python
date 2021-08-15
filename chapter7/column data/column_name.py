@@ -14,7 +14,7 @@ def read_lines(column_name):
                 answer = columns[1]
             elif column_name == "age":
                 answer = columns[2]
-            elif column_name == "street number" or "street":
+            elif column_name == "street number" or column_name == "street":
                 answer = columns[3]
             elif column_name == "weight":
                 answer = columns[4]
@@ -28,8 +28,21 @@ def parse_line(line):
     wait_for_start = True
     no_quotes = False
     with_quotes = False
+    after_quotes = False
     for char in line:
-        if wait_for_start:
+        if after_quotes:
+            if char == ",":
+                after_quotes = False
+                word = ""
+
+        elif char == "\n":
+            words.append(word)
+            word = ""
+            wait_for_start = True
+            no_quotes = False
+            with_quotes = False
+
+        elif wait_for_start:
             wait_for_start = False
             if char == '"':
                 with_quotes = True
@@ -44,6 +57,7 @@ def parse_line(line):
                 wait_for_start = True
                 no_quotes = False
                 with_quotes = False
+                after_quotes = True
             else:
                 word = word + char
 
