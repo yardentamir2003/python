@@ -8,18 +8,23 @@ def read_lines(column_name):
             first_line = False
             continue
         else:
-            index = 0
             columns = parse_line(line)
-            while index < len(columns_names):
-                if column_name.lower() == columns_names[index].lower():
-                    break
-                else:
-                    index = index + 1
-
-        answer = columns[index]
-        answers.append(answer)
+            num = find_index(column_name, columns_names)
+            answer = columns[num]
+            answers.append(answer)
 
     return answers
+
+
+def find_index(column_name, columns_names):
+    index = 0
+    while index < len(columns_names):
+        if column_name.lower() == columns_names[index].lower():
+            break
+        else:
+            index = index + 1
+
+    return index
 
 
 def parse_line(line):
