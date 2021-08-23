@@ -4,22 +4,27 @@ def read_lines(column_name):
     first_line = True
     for line in file_input:
         if first_line:
+            columns_names = parse_line(line)
             first_line = False
             continue
         else:
             columns = parse_line(line)
-            if column_name == "first name":
-                answer = columns[0]
-            elif column_name == "last name":
-                answer = columns[1]
-            elif column_name == "age":
-                answer = columns[2]
-            elif column_name == "street number" or column_name == "street":
-                answer = columns[3]
-            elif column_name == "weight":
-                answer = columns[4]
-        answers.append(answer)
+            num = find_index(column_name, columns_names)
+            answer = columns[num]
+            answers.append(answer)
+
     return answers
+
+
+def find_index(column_name, columns_names):
+    index = 0
+    while index < len(columns_names):
+        if column_name.lower() == columns_names[index].lower():
+            break
+        else:
+            index = index + 1
+
+    return index
 
 
 def parse_line(line):
@@ -74,7 +79,7 @@ def parse_line(line):
     return words
 
 
-column_name = input("Enter a column name: ")
-data = read_lines(column_name)
-for answer in data:
-    print(answer)
+name = input("Enter a column name: ")
+data = read_lines(name)
+for value in data:
+    print(value)
