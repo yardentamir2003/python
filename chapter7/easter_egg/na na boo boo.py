@@ -1,7 +1,8 @@
 file_name = input("Enter a file name: ")
 if file_name == "na na boo boo":
     print("NA NA BOO BOO TO YOU - You have been punk'd!")
-    exit(1)
+    exit(0)
+
 try:
     file = open(file_name)
 except:
