@@ -12,5 +12,5 @@ def from_count(file_name):
 
 
 file_name = input("Enter a file name: ")
-count = from_count(file_name)
-print("There were", count, "lines in the file with From as the first word")
+total = from_count(file_name)
+print("There were", total, "lines in the file with From as the first word")
