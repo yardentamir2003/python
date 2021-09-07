@@ -1,3 +1,6 @@
+import re
+
+
 def story_count(file_name):
     word_list = []
     count_list = []
@@ -5,6 +8,7 @@ def story_count(file_name):
     for line in file:
         line = line.lower()
         line = line.rstrip()
+        line = re.sub('[.,!?]', "", line)
         words = line.split(" ")
         for word in words:
             if word in word_list:
