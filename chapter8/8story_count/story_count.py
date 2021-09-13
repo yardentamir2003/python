@@ -36,11 +36,13 @@ def find_index(word, word_list):
 
     return index
 
+
 def main():
     file_name = input("Enter a file name: ")
     word_list, count_list = story_count(file_name)
     for i in range(len(word_list)):
         print(word_list[i], end=" ")
         print(count_list[i])
+
 
 main()
