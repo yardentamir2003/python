@@ -6,8 +6,6 @@ def from_count(file_name):
             word_list = line.split(" ")
             print(word_list[1])
             count = count + 1
-        else:
-            continue
     return count
 
 

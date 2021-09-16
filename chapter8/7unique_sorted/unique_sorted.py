@@ -11,7 +11,11 @@ def list_creator(file_name):
     return num_list
 
 
-file_name = input("Enter a file name: ")
-full_list = list_creator(file_name)
-for num in full_list:
-    print(num)
+def main():
+    file_name = input("Enter a file name: ")
+    full_list = list_creator(file_name)
+    for num in full_list:
+        print(num)
+
+
+main()

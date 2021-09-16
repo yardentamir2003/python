@@ -13,7 +13,11 @@ def list_creator(file_name):
     return unique_words
 
 
-file_name = input("Enter a file name: ")
-full_list = list_creator(file_name)
-full_list.sort()
-print(full_list)
+def file_sorter():
+    file_name = input("Enter a file name: ")
+    full_list = list_creator(file_name)
+    full_list.sort()
+    print(full_list)
+
+
+file_sorter()
