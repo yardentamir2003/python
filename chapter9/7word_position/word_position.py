@@ -23,7 +23,6 @@ def parse_line(file_dictionary, line, line_number):
             file_dictionary[word] = [val]
         else:
             word_number += 1
-            # val = "line " + str(line_number) + "word " + str(word_number)
             val = "line {} word {}".format(line_number + 1, word_number + 1)
             file_dictionary[word].append(val)
 
