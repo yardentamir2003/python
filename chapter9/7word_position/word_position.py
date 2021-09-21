@@ -9,7 +9,6 @@ def main():
         line = line.lower()
         line = line.rstrip()
         line = re.sub('[.,!?]', "", line)
-        line = line.rstrip()
         parse_line(file_dictionary, line, line_number)
         line_number += 1
     print_output(file_dictionary)
