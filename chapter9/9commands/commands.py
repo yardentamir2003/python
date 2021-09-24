@@ -6,8 +6,6 @@ def main():
     for key in word_dictionary:
         if word_dictionary[key] != 0:
             print(key, word_dictionary[key])
-        else:
-            continue
 
 
 def dictionary_creator(line, word_dictionary):
