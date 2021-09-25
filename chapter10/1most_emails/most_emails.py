@@ -1,9 +1,4 @@
 def main():
-    counts = dictionary_creator()
-    tuple_list(counts)
-
-
-def dictionary_creator():
     file = open("input.txt")
     counts = {}
     for line in file:
@@ -14,7 +9,7 @@ def dictionary_creator():
                 counts[mail] += 1
             else:
                 counts[mail] = 1
-    return counts
+    tuple_list(counts)
 
 
 def tuple_list(counts):
