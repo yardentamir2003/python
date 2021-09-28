@@ -1,30 +1,32 @@
 def main():
-    d = {}
+    people_height = {}
     file = open("input.txt")
-    parse_line(file, d)
+    for line in file:
+        parse_line(line, people_height)
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
     age = input("Enter age: ")
-    t = (first_name, last_name, age)
-    try:
-        height = d[t]
+    person_info = (first_name, last_name, age)
+
+    if person_info in people_height:
+        height = people_height[person_info]
         print("===> The height is ", height)
-    except:
+    else:
         print("===> Sorry, not found")
+
     answer = input("Do you have another query (yes/no): ")
     yes_no(answer)
 
 
-def parse_line(file, d):
-    for line in file:
-        line = line.rstrip()
-        word_list = line.split(" ")
-        first_name = word_list[0]
-        last_name = word_list[1]
-        age = word_list[2]
-        height = word_list[3]
-        tuple_key = (first_name, last_name, age)
-        d[tuple_key] = height
+def parse_line(line, people_height):
+    line = line.rstrip()
+    word_list = line.split(" ")
+    first_name = word_list[0]
+    last_name = word_list[1]
+    age = word_list[2]
+    height = word_list[3]
+    tuple_key = (first_name, last_name, age)
+    people_height[tuple_key] = height
 
 
 def yes_no(answer):
@@ -33,7 +35,3 @@ def yes_no(answer):
 
 
 main()
-
-# a = (1, 2)
-# d = {}
-# d[a] = 9
