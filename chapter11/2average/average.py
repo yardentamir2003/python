@@ -12,7 +12,8 @@ def main():
             x = int(x[0])
             sum = sum + x
             count += 1
-    avarage = int(sum/count)
-    print("Avarage:", avarage)
+    avarage = int(sum / count)
+    print("avarage:", avarage)
+
 
 main()
