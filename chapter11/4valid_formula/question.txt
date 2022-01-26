@@ -1,0 +1,14 @@
+Write a program that checks if a math formula is correct. The formula can use numbers, variables, and the operators +,-,*,/ for example:
+
+Enter formula: a + b
+The formula is valid.
+Enter formula: a ++ b
+The formula is NOT valid.
+Enter formula: a+5.4  * 40 / g
+The formula is valid.
+Enter formula: a /b+.6   - 42 - t +0.5
+The formula is valid.
+Enter formula: -1-2+6.6.6.6
+The formula is NOT valid.
+
+To test this, use an input file with many examples, and make sure the program is correct for each.
