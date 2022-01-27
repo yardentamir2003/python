@@ -5,9 +5,10 @@ def main():
     file = open("input.html")
     for line in file:
         line = line.rstrip()
-        x = re.findall('^<div>(.+)</div>$', line)
-        if len(x) > 0:
-            print(x[0])
+        div_line = re.findall('<div>(.+?)</div>', line)
+        if len(div_line) > 0:
+            for item in div_line:
+                print(item)
 
 
 main()

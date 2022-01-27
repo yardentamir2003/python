@@ -3,17 +3,17 @@ import re
 
 def main():
     file = open("input.txt")
-    sum = 0
+    revision_sum = 0
     count = 0
     for line in file:
         line = line.rstrip()
-        x = re.findall('^New Revision: ([0-9]+)', line)
-        if len(x) > 0:
-            x = int(x[0])
-            sum = sum + x
+        revision_number = re.findall('^New Revision: ([0-9]+)', line)
+        if len(revision_number) > 0:
+            revision_number = int(revision_number[0])
+            revision_sum = revision_sum + revision_number
             count += 1
-    avarage = int(sum / count)
-    print("avarage:", avarage)
+    average = int(revision_sum / count)
+    print("average:", average)
 
 
 main()
