@@ -1,9 +1,10 @@
 from main import is_formula_valid
 
 
-def parse_line():
+def parse_file():
     file = open("test.txt")
     line_number = 1
+    problematic_lines = 0
     for line in file:
         line = line.rstrip()
         divided_line = line.split(",")
@@ -15,9 +16,10 @@ def parse_line():
             valid = False
         if is_formula_valid(formula) != valid:
             print("There's a problem with line number", line_number)
-        else:
-            print("Hooray! Your code is spectacular!")
+            problematic_lines += 1
         line_number += 1
+    if problematic_lines == 0:
+        print("Hooray! Your code is spectacular!")
 
 
-parse_line()
+parse_file()
