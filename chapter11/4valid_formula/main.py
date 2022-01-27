@@ -10,8 +10,7 @@ def main():
 
 
 def is_formula_valid(formula):
-    pattern = '^(-?[a-z]|-?\\.?[0-9]+|-?[0-9]+\\.[0-9]+)\\s*([-+\\/*]\\s*([a-z]|\\.?[0-9]+|[0-9]+\\.[0-9]+)\\s*)*$'
-    print(pattern)
+    pattern = '^(-?[a-z]|-?\\.?[0-9]+|-?[0-9]+\\.[0-9]+)\\s*([-+\\/*]\\s*([a-z]|\\-?.?[0-9]+|[0-9]+\\-?.[0-9]+)\\s*)*$'
     checked_formula = re.findall(pattern, formula)
     return len(checked_formula) > 0
 
