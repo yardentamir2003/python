@@ -6,14 +6,8 @@ def main():
     line_number = 1
     for line in file:
         line = line.rstrip()
-        x = re.findall('[bd][oe]?.$', line)
-        if len(x) > 0:
-            print("Sentence #", line_number, "is valid")
-        else:
-            word_number, problem = find_problem(line)
-            print("Sentence #", line_number, "is invalid: word #", word_number, problem)
-        line_number += 1
-        main()
+
+    line_number += 1
 
 
 def find_problem(line):
@@ -27,3 +21,27 @@ def find_problem(line):
         problem = "missing dot at the end"
 
     return word_number, problem
+
+
+def missing_dot(line):
+    dot_exists = re.findall('\\.$', line)
+    problem = "missing dot at the end."
+    return len(dot_exists) > 0, problem
+
+def bdoe_letters(line):
+    bdoe_only = re.findall('(b[bdoe]*)|(d[bdoe]*)|([bdoe]*b)|([bdoe]*d)', line)
+    return len(bdoe_only) > 0, ""
+
+def word_twice(line):
+    word_number = 1
+    words = line.split()
+    words_dictionary = {}
+    for word in words:
+        if word not in words_dictionary:
+            words_dictionary[word] = 1
+        else:
+            problem = ("word #", word_number, "is already exists.")
+            return False, problem
+        word_number += 1
+
+def longer_word(line):

@@ -1,0 +1,29 @@
+Q3:
+In the lemmings language, there are strict rules!
+1. You must not say the same word twice.
+2. Each word can have only the following letters: b,d,o,e
+3. Each word must be longer than the previous word in the sentence.
+4. The amount of sequential o,e must be the same in the word, and must be according to the word position. The first word - only one, the second word - only two, and so on.
+5. A word can always be without o,e
+6. A sentence must end with a dot.
+
+Your job is to get a story from input.txt, and for each sentence, print if it is valid, and if it is not, in which word is the problem.
+
+For example: input.txt:
+bob deed booodeeed.
+b dd bbb dddd bbdbdd.
+b boob
+deed deedoob.
+b b b.
+
+
+Output:
+Sentence #1 is valid
+Sentence #2 is valid
+Sentence #3 is invalid: missing dot at the end
+Sentence #4 is invalid: word #1 is invalid
+Sentence #5 is invalid: word #2 already exists
+
+
+
+To test this, use an input file with many examples, and make sure the program is correct for each.
