@@ -1,0 +1,6 @@
+bbb.,true
+bb.,true
+bob beeboo.,true
+b,missing dot at the end.
+bbb bbbbb,missing dot at the end.
+bb..,true
