@@ -21,6 +21,9 @@ def check_line(line):
     problem = word_twice(line)
     if problem is not None:
         return problem
+    problem = longer_than_previous(line)
+    if problem is not None:
+        return problem
 
 
 def ends_with_dot(line):
@@ -40,7 +43,15 @@ def word_twice(line):
             return "word #{} already exists.".format(word_number)
         word_number += 1
 
-# def longer_than_previous(line):
+
+def longer_than_previous(line):
+    index = 0
+    words = line.split()
+    while index < len(words) - 1:
+        if len(words[index]) > len(words[index + 1]):
+            return "there is a problem with word number #{}".format(index)
+        else:
+            index += 1
 
 
 # def bdoe_letters(line):
