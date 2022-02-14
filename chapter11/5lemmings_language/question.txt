@@ -27,3 +27,10 @@ Sentence #5 is invalid: word #2 already exists
 
 
 To test this, use an input file with many examples, and make sure the program is correct for each.
+
+
+
+hxxxxxxh hxh hh hxxh
+
+^hx*h$
+^(hx*h)(\s+hx*h)*$

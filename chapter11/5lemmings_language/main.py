@@ -24,6 +24,12 @@ def check_line(line):
     problem = longer_than_previous(line)
     if problem is not None:
         return problem
+    problem = bdoe_letters(line)
+    if problem is not None:
+        return problem
+    problem = eo_amount(line)
+    if problem is not None:
+        return problem
 
 
 def ends_with_dot(line):
@@ -49,17 +55,32 @@ def longer_than_previous(line):
     words = line.split()
     while index < len(words) - 1:
         if len(words[index]) > len(words[index + 1]):
-            return "there is a problem with word number #{}".format(index)
+            return "word #{} is invalid".format(index)
         else:
             index += 1
 
 
-# def bdoe_letters(line):
-#     match = re.findall('(b[bdoe]*)|(d[bdoe]*)|([bdoe]*b)|([bdoe]*d)', line)
-#     if len(match) == 0:
-#         return
+def bdoe_letters(line):
+    line = re.sub('[.]', '', line)
+    words = line.split()
+    word_number = 1
+    for word in words:
+        match = re.findall('^[bdoe][bdoe]*$', word)
+        if len(match) == 0:
+            return "word #{} is invalid".format(word_number)
+        word_number += 1
 
-main()
+
+def eo_amount(line):
+    word_number = 1
+    words = line.split()
+    for word in words:
+        pattern = "e{{{}}}|o{{{}}}".format(word_number, word_number)
+        #יש פה טעות
+        match = re.findall(pattern, word)
+        if len(match) == 0:
+            return "word #{} is invalid.".format(word_number)
+        word_number += 1
 
 
 if __name__ == '__main__':

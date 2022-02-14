@@ -1,6 +1,7 @@
-bbb.,true
-bb.,true
-bob beeboo.,true
+bbb.,valid
+bb.,valid
+bob beeboo.,valid
 b,missing dot at the end.
 bbb bbbbb,missing dot at the end.
-bb..,true
+bb..,valid
+giugui jih.,word #1 is invalid
