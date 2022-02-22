@@ -35,7 +35,7 @@ def check_line(line):
 def ends_with_dot(line):
     match = re.findall('\\.$', line)
     if len(match) == 0:
-        return "missing dot at the end."
+        return "missing dot at the end"
 
 
 def word_twice(line):
@@ -46,7 +46,7 @@ def word_twice(line):
         if word not in words_dictionary:
             words_dictionary[word] = 1
         else:
-            return "word #{} already exists.".format(word_number)
+            return "word #{} already exists".format(word_number)
         word_number += 1
 
 
@@ -80,7 +80,7 @@ def eo_amount(line):
         #יש פה טעות
         match = re.findall(pattern, word)
         if len(match) == 0:
-            return "word #{} is invalid.".format(word_number)
+            return "word #{} is invalid".format(word_number)
         word_number += 1
 
 
