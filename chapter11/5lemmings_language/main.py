@@ -72,10 +72,11 @@ def bdoe_letters(line):
 
 
 def eo_amount(line):
+    line = re.sub('[.]', '', line)
     word_number = 1
     words = line.split()
     for word in words:
-        pattern = "e{{{}}}|o{{{}}}".format(word_number, word_number)
+        pattern = '(^[bd]*(e{{{}}})?[bd]*(o{{{}}})?[bd]*$)|(^[bd]*(o{{{}}})?[bd]*(e{{{}}})?[bd]*$)'.format(word_number, word_number, word_number, word_number)
         #יש פה טעות
         match = re.findall(pattern, word)
         if len(match) == 0:
