@@ -32,6 +32,7 @@ def check_line(line):
         return problem
 
 
+
 def ends_with_dot(line):
     match = re.findall('\\.$', line)
     if len(match) == 0:
@@ -77,7 +78,6 @@ def eo_amount(line):
     words = line.split()
     for word in words:
         pattern = '(^[bd]*(e{{{}}})?[bd]*(o{{{}}})?[bd]*$)|(^[bd]*(o{{{}}})?[bd]*(e{{{}}})?[bd]*$)'.format(word_number, word_number, word_number, word_number)
-        #יש פה טעות
         match = re.findall(pattern, word)
         if len(match) == 0:
             return "word #{} is invalid".format(word_number)

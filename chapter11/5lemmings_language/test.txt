@@ -1,14 +1,14 @@
 bbb.,valid
 bb.,valid
 bob beeboo.,valid
-b,missing dot at the end.
-bbb bbbbb,missing dot at the end.
+b,missing dot at the end
+bbb bbbbb,missing dot at the end
 bb..,valid
 giugui jih.,word #1 is invalid
 bob deed booodeeed.,valid
-deed deedoob.word #1 is invalid
-bbl.word #1 is invalid
-b dd bbb dddd bbdbdd.valid
+deed deedoob.,word #1 is invalid
+bbl.,word #1 is invalid
+b dd bbb dddd bbdbdd.,valid
 b boob,missing dot at the end
-b b b.word #1 already exists
-bbb bbbbb bb.word #3 is invalid
+b b b.,word #1 already exists
+bbb bbbbb bb.,word #3 is invalid
