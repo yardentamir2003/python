@@ -32,7 +32,6 @@ def check_line(line):
         return problem
 
 
-
 def ends_with_dot(line):
     match = re.findall('\\.$', line)
     if len(match) == 0:
@@ -56,7 +55,7 @@ def longer_than_previous(line):
     words = line.split()
     while index < len(words) - 1:
         if len(words[index]) > len(words[index + 1]):
-            return "word #{} is invalid".format(index)
+            return "word #{} is invalid".format(index+1)
         else:
             index += 1
 
@@ -77,7 +76,10 @@ def eo_amount(line):
     word_number = 1
     words = line.split()
     for word in words:
-        pattern = '(^[bd]*(e{{{}}})?[bd]*(o{{{}}})?[bd]*$)|(^[bd]*(o{{{}}})?[bd]*(e{{{}}})?[bd]*$)'.format(word_number, word_number, word_number, word_number)
+        pattern = '(^[bd]*(e{{{}}})?[bd]*(o{{{}}})?[bd]*$)|(^[bd]*(o{{{}}})?[bd]*(e{{{}}})?[bd]*$)'.format(word_number,
+                                                                                                           word_number,
+                                                                                                           word_number,
+                                                                                                           word_number)
         match = re.findall(pattern, word)
         if len(match) == 0:
             return "word #{} is invalid".format(word_number)

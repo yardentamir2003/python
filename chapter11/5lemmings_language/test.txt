@@ -10,5 +10,5 @@ deed deedoob.,word #1 is invalid
 bbl.,word #1 is invalid
 b dd bbb dddd bbdbdd.,valid
 b boob,missing dot at the end
-b b b.,word #1 already exists
-bbb bbbbb bb.,word #3 is invalid
+b b b.,word #2 already exists
+bbb bbbbb bb.,word #2 is invalid
