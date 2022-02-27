@@ -18,13 +18,13 @@ def check_line(line):
     problem = ends_with_dot(line)
     if problem is not None:
         return problem
+    problem = bdoe_letters(line)
+    if problem is not None:
+        return problem
     problem = word_twice(line)
     if problem is not None:
         return problem
     problem = longer_than_previous(line)
-    if problem is not None:
-        return problem
-    problem = bdoe_letters(line)
     if problem is not None:
         return problem
     problem = eo_amount(line)
@@ -52,10 +52,14 @@ def word_twice(line):
 
 def longer_than_previous(line):
     index = 0
+    line = line[:-1]
     words = line.split()
     while index < len(words) - 1:
         if len(words[index]) > len(words[index + 1]):
-            return "word #{} is invalid".format(index+1)
+            if index == 0:
+                return "word #{} is invalid".format(index + 2)
+            else:
+                return "word #{} is invalid".format(index+1)
         else:
             index += 1
 
@@ -65,7 +69,7 @@ def bdoe_letters(line):
     words = line.split()
     word_number = 1
     for word in words:
-        match = re.findall('^[bdoe][bdoe]*$', word)
+        match = re.findall('^[bdoe]+$', word)
         if len(match) == 0:
             return "word #{} is invalid".format(word_number)
         word_number += 1
