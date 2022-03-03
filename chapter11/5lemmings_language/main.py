@@ -56,12 +56,8 @@ def longer_than_previous(line):
     words = line.split()
     while index < len(words) - 1:
         if len(words[index]) > len(words[index + 1]):
-            if index == 0:
-                return "word #{} is invalid".format(index + 2)
-            else:
-                return "word #{} is invalid".format(index+1)
-        else:
-            index += 1
+            return "word #{} is invalid".format(index + 2)
+        index += 1
 
 
 def bdoe_letters(line):

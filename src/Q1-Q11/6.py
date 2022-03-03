@@ -1,4 +1,3 @@
-
 score = input("Enter score: ")
 try:
     score = float(score)
