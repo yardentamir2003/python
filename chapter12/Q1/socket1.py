@@ -10,7 +10,7 @@ except:
     print("Non-existent URL.")
 
 
-cmd = ("GET #{} HTTP/1.0\r\n\r\n".format(URL)).encode()
+cmd = ("GET {} HTTP/1.0\r\n\r\n".format(URL)).encode()
 mysocket.send(cmd)
 
 while True:
