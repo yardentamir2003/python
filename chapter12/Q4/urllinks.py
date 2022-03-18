@@ -14,5 +14,4 @@ soup = BeautifulSoup(html, 'html.parser')
 # Retrieve all of the anchor tags
 tag_count = 0
 tags = soup('p')
-for tag in tags:
-    print(tag.get('href', None))
+print(len(tags))
