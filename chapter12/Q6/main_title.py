@@ -8,7 +8,7 @@ ctx.verify_mode = ssl.CERT_NONE
 url = "https://www.walla.co.il/"
 html = urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, "html.parser")
-# Retrieve all of the anchor tags
+# print the main title
 tags = soup('h2')
 print(tags[0])
 
