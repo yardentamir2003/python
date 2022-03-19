@@ -12,3 +12,4 @@ soup = BeautifulSoup(html, "html.parser")
 tags = soup('h2')
 print(tags[0])
 
+
