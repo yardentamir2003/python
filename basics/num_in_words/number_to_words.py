@@ -22,12 +22,13 @@ def two_digit(number):
         line = line.strip()
         comma_position = line.find(",")
         if number[0] == line[0]:
-            dozens = line[comma_position:]
-            for line in file:
-                if line[0] == number[1]:
-                    units_digit = line[0]
-                    words = (dozens, units_digit)
-                    return words
+            dozens = line[comma_position+1:]
+            break
+    for line in file:
+        if line[0] == number[1]:
+            units_digit = line[0]
+            words = (dozens, units_digit)
+            return words
 
 
 main()
