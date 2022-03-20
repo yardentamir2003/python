@@ -57,4 +57,4 @@ main()
 
 #problems:
 #always prints "zero" : 90 = ninety zero
-#cant read special 2 digits : 14 = four
+#cant read special 2 digits : 14 = four, 312 = three hundreds and two
