@@ -6,12 +6,23 @@ def main():
     elif len(number) == 2:
         unit = unit_digit(number)
         dozens = dozen_digit(number)
-        print(dozens, unit)
+        if unit == "zero":
+            print(dozens)
+        else:
+            print(dozens, unit)
     elif len(number) == 3:
         unit = unit_digit(number)
         dozens = dozen_3_digit(number)
         hundreds = hundred_digit(number)
-        print(hundreds, "hundreds and", dozens, unit)
+        if unit == "zero":
+            if dozens == "zero":
+                print(hundreds, "hundreds")
+            else:
+                print(hundreds, "hundreds and", dozens)
+        elif dozens == "zero":
+            print(hundreds, "hundreds and", unit)
+        else:
+            print(hundreds, "hundreds and", dozens, unit)
 
 
 def unit_digit(number):
@@ -56,5 +67,4 @@ def hundred_digit(number):
 main()
 
 #problems:
-#always prints "zero" : 90 = ninety zero
-#cant read special 2 digits : 14 = four, 312 = three hundreds and two
+#cant read special 2 digits : 14 = one four, 312 = three hundreds and one two
