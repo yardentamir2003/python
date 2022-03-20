@@ -68,3 +68,4 @@ main()
 
 #problems:
 #cant read special 2 digits : 14 = one four, 312 = three hundreds and one two
+#if the hundreds digit is 1, it prints hundreds and not hundred.
