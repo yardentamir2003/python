@@ -11,11 +11,14 @@ def main():
     number = int(input("Enter number: "))
     if number <= 20:
         words = less_than_20(number)
-    elif 20 < number < 99:
+    elif 20 <= number <= 99:
         words = two_digits(number)
-    elif 100 <= number < 999:
+    elif 100 <= number <= 999:
         words = three_digits(number)
+    elif 1000 <= number <= 9999:
+        words =
     print(words)
+
 
 
 def less_than_20(number):
@@ -28,21 +31,29 @@ def two_digits(number):
     tens = int(tens_digit) * 10
     tens = num2word.get(int(tens))
     unit_digit = str(number)[1]
-    if unit_digit == "0":
+    word = num2word.get(int(unit_digit))
+    if word == "Zero" and tens == "Zero":
+        return ""
+    elif unit_digit == "0":
         return tens
+    elif tens == "Zero":
+        answer = "and {}".format(word)
+        return answer
     else:
-        word = num2word.get(int(unit_digit))
         answer = "{} {}".format(tens, word)
         return answer
 
 
 def three_digits(number):
-    hundreds = number[0]
-    hundreds = num2word.get(hundreds)
-    tens = number[1:]
+    hundreds = str(number)[0]
+    hundreds = num2word.get(int(hundreds))
+    tens = str(number)[1:]
     tens = two_digits(tens)
-    words = (hundreds, "hundreds", tens)
+    words = "{} hundreds {}".format(hundreds,tens)
     return words
+
+
+#def four_digits(number):
 
 
 main()
