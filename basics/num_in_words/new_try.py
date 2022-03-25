@@ -8,17 +8,21 @@ num2word = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five',
 
 
 def main():
-    number = int(input("Enter number: "))
-    if number <= 20:
-        words = less_than_20(number)
-    elif 20 <= number <= 99:
-        words = two_digits(number)
-    elif 100 <= number <= 999:
-        words = three_digits(number)
-    elif 1000 <= number <= 9999:
-        words =
-    print(words)
-
+    try:
+        number = int(input("Enter number: "))
+        if number <= 20:
+            words = less_than_20(number)
+        elif 20 <= number <= 99:
+            words = two_digits(number)
+        elif 100 <= number <= 999:
+            words = three_digits(number)
+        elif 1000 <= number <= 9999:
+            words = four_digits(number)
+        else:
+            words = "Ten thousands"
+        print(words)
+    except:
+        print("Error, please enter a number")
 
 
 def less_than_20(number):
@@ -37,8 +41,7 @@ def two_digits(number):
     elif unit_digit == "0":
         return tens
     elif tens == "Zero":
-        answer = "and {}".format(word)
-        return answer
+        return word
     else:
         answer = "{} {}".format(tens, word)
         return answer
@@ -49,11 +52,20 @@ def three_digits(number):
     hundreds = num2word.get(int(hundreds))
     tens = str(number)[1:]
     tens = two_digits(tens)
-    words = "{} hundreds {}".format(hundreds,tens)
+    if hundreds == "Zero":
+        return tens
+    else:
+        words = "{} hundreds {}".format(hundreds, tens)
+        return words
+
+
+def four_digits(number):
+    thousands = str(number)[0]
+    thousands = num2word.get(int(thousands))
+    hundreds = str(number)[1:]
+    hundreds = three_digits(hundreds)
+    words = "{} thousands {}".format(thousands, hundreds)
     return words
-
-
-#def four_digits(number):
 
 
 main()
