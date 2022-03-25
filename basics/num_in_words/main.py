@@ -22,7 +22,7 @@ def main():
             words = "Ten thousands"
         print(words)
     except:
-        print("Error, please enter a number")
+        print("Error, please enter a number up to 10000.")
 
 
 def less_than_20(number):

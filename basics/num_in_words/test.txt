@@ -1,0 +1,8 @@
+0,zero
+7,seven
+10,ten
+20,twenty
+24,twenty four
+99,ninety nine
+100,one hundred
+234,two hundred thirty four

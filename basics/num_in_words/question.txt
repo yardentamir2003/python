@@ -1,0 +1,6 @@
+create a python code that asks the user for a number and print the number in words.
+the number is between 0-10000
+
+for example:
+Enter number: 712
+Seven hundreds and twelve 
