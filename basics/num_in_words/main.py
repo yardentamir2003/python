@@ -69,3 +69,6 @@ def four_digits(number):
 
 
 main()
+
+if __name__ == '__main__':
+    main()

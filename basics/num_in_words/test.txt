@@ -5,4 +5,20 @@
 24,twenty four
 99,ninety nine
 100,one hundred
-234,two hundred thirty four
+234,two hundreds thirty four
+500,five hundred
+505,five hundreds five
+550,five hundreds fifty
+999,nine hundred ninety nine
+1000,one thousand
+8234,eight thousands two hundreds thirty four
+9999,nine thousands nine hundreds ninety nine
+10000,ten thousands
+3300,three thousands three hundreds
+3003,three thousands three
+3030,three thousands thirty
+3031,three thousands thirty one
+3103,three thousands one hundred three
+436436,Error, please enter a number up to 10000.
+hgu,Error, please enter a number up to 10000.
+dfh 23 df,Error, please enter a number up to 10000.
