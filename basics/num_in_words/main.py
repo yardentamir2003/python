@@ -8,8 +8,14 @@ num2word = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five',
 
 
 def main():
+    number = input("Enter number: ")
+    words = return_answer(number)
+    print(words)
+
+
+def return_answer(number):
     try:
-        number = int(input("Enter number: "))
+        number = int(number)
         if number <= 20:
             words = less_than_20(number)
         elif 20 <= number <= 99:
@@ -19,10 +25,13 @@ def main():
         elif 1000 <= number <= 9999:
             words = four_digits(number)
         else:
-            words = "Ten thousands"
-        print(words)
+            if number == 10000:
+                words = "Ten thousands"
+            else:
+                words = "Error please enter a number up to 10000."
     except:
-        print("Error, please enter a number up to 10000.")
+        words = "Error please enter a number up to 10000."
+    return words
 
 
 def less_than_20(number):
@@ -55,7 +64,10 @@ def three_digits(number):
     if hundreds == "Zero":
         return tens
     else:
-        words = "{} hundreds {}".format(hundreds, tens)
+        if hundreds == "One":
+            words = "{} hundred {}".format(hundreds, tens)
+        else:
+            words = "{} hundreds {}".format(hundreds, tens)
         return words
 
 
@@ -64,11 +76,12 @@ def four_digits(number):
     thousands = num2word.get(int(thousands))
     hundreds = str(number)[1:]
     hundreds = three_digits(hundreds)
-    words = "{} thousands {}".format(thousands, hundreds)
+    if thousands == "One":
+        words = "{} thousand {}".format(thousands, hundreds)
+    else:
+        words = "{} thousands {}".format(thousands, hundreds)
     return words
 
-
-main()
 
 if __name__ == '__main__':
     main()
