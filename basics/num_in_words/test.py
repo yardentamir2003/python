@@ -35,6 +35,7 @@ def parse_line(line, line_number):
                                                                                                     expected_result,
                                                                                                     lower_actual_result))
             return False
+    return True
 
 
 parse_file()
