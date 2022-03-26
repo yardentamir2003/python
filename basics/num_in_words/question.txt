@@ -3,4 +3,4 @@ the number is between 0-10000
 
 for example:
 Enter number: 712
-Seven hundreds and twelve 
+Seven hundreds twelve
