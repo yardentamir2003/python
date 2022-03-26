@@ -1,4 +1,4 @@
-436436,Error please enter a number up to 10000.
+436436,error please enter a number up to 10000.
 100,one hundred
 0,zero
 7,seven
@@ -20,5 +20,5 @@
 3030,three thousands thirty
 3031,three thousands thirty one
 3103,three thousands one hundred three
-hgu,Error please enter a number up to 10000.
-dfh 23 df,Error please enter a number up to 10000.
+hgu,error please enter a number up to 10000.
+dfh 23 df,error please enter a number up to 10000.
