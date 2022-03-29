@@ -1,0 +1,66 @@
+Create a program that gets details about singers candidates and writes them into files.
+
+The following details are required for each singer:
+First name (must not be empty)
+Last name (must not be empty)
+Birth date (must be in format yyyy-mm-dd)
+Birth Country (must not be empty)
+Current Country (must not be empty)
+City (must not be empty)
+Street address (must not be empty)
+List of other candidates that you know (ask repeatedly for names).
+
+If the age is under 18 ask for the following:
+Do we have parents approval (yes/no)
+School name (must not be empty)
+Grade (must not be empty)
+
+If the birth country is out of Israel, ask for the following:
+Date of enter to Israel (must be in format yyyy-mm-dd)
+Do you speak hebrew (yes/no)
+
+Make sure to validate all input from the user.
+
+For example:
+
+Welcome candidate!
+Please enter the following details:
+What is your first name: Alon
+What is your last name: Tamir
+What is your birth date: 147
+Ahhh.. Are you sure? Please enter date in format yyyy-mm-dd
+What is your birth date: 2000-12-30
+What is your birth country: Canada
+When did you enter to Israel: 2010-10-25
+Do you speak hebrew (yes/no): bla
+Ahhh.. Are you sure? Please enter yes or no
+Do you speak hebrew (yes/no): yes
+What is your current country: Egypt
+What is your current city: Cairo
+What is your current street address: Muhamad 15
+Do you know any candidates: yes
+Who do you know: Ifat Tamir
+Do you know any more candidates: yes
+Who do you know: Yarden Tamir
+Do you know any more candidates: no
+Well done. Your registration is complete.
+
+The candidate details should be saved into a file in JSON format (use python’s JSON for this). For example:
+{
+firstName: “Alon”,
+lastName:”Tamir”.
+… and more
+}
+
+The file name should be cadidate_XXX.json, where XXX is a sequence number starting from 001. Whenever we run the program it should check the existing files, and find the next required sequence to use.
+
+If the files amount is over 100, running the program will print: candidates list is full, try next year.
+
+Don’t forget to write tests for the program.
+
+
+example:
+    name ='s'
+    d={}
+    d['first']=name
+    print(json.dumps(d))
