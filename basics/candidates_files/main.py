@@ -62,13 +62,13 @@ def israel_function():
 
 
 def knows_candidates():
-    know_candidates = input("Do you know any candidates (yes/no): ")
     while True:
-        yes_no = re.findall('"yes"|"no"', know_candidates)
-        if len(yes_no) == 0:
-            print("Ahhh.. Are you sure? Please enter yes or no")
-            return None
-        else:
+        know_candidates = input("Do you know any candidates (yes/no): ")
+        invalid_answer = check_yes_no(know_candidates)
+        if invalid_answer is None:
+            continue
+        if not invalid_answer:
             return False
+
 
 main()
