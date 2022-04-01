@@ -19,7 +19,7 @@ def main():
             break
     birth_country = input("What is your birth country: ")
     if birth_country == "israel" or "Israel":
-        israel_functuon()
+        israel_function()
     courrent_country = input("What is your current country: ")
     city =input("What is your current city: ")
     street = input("What is your current street address: ")
@@ -68,7 +68,11 @@ def knows_candidates():
         if invalid_answer is None:
             continue
         if not invalid_answer:
-            return False
+            if know_candidates == "yes":
+                continue
+            else:
+                print("Well done. Your registration is complete.")
+                break
 
 
 main()
