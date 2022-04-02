@@ -14,7 +14,7 @@ def main():
         files_amount += 1
 
 def build_dictionary():
-    d = {}
+    d={}
     d["first name"] = first_name
     d["last name"] = last_name
     d["birth day"] = birth_date

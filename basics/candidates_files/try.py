@@ -2,6 +2,20 @@ import json
 import re
 
 
+def main():
+    print("Welcome candidate!\nPlease enter the following details:")
+    #files_amount = 0o1
+    #for file in files:
+        #if files_amount > 100:
+            #print("candidates list is full, try next year.")
+            #exit(0)
+        #file_name = "cadidate_{}.json".format(files_amount)
+    d = ask_questions()
+        #output_file = open(file_name, "w")
+        #json.dump(d, output_file, indent=6)
+        #files_amount += 1
+
+
 def ask_questions():
     d = {}
     first_name = input("What is your first name: ")
@@ -13,7 +27,7 @@ def ask_questions():
             continue
         if not invalid_date:
             break
-    under_eighteen(birth_date)
+    parent_approval, school_name, grade = under_eighteen(birth_date)
     birth_country = input("What is your birth country: ")
     if birth_country != "israel" and birth_country != "Israel":
         israel_entrance, hebrew_speaker = non_israel_function()
@@ -26,29 +40,16 @@ def ask_questions():
     d["birth day"] = birth_date
     d["parent_approval"] = parent_approval
     d["grade"] = grade
-    d["school"] = school
+    d["school"] = school_name
     d["birth country"] = birth_country
     d["israel entrance"] = israel_entrance
     d["hebrew speaker"] = hebrew_speaker
-    d["courrent country"] = current_country
+    d["current country"] = current_country
     d["city"] = city
     d["street"] = street
-    d["familiar candudates"] = candidates_names
+    d["familiar candidates"] = candidates_names
+    print(d)
     return d
-
-
-def main():
-    print("Welcome candidate!\nPlease enter the following details:")
-    files_amount = 0o1
-    for file in files:
-        if files_amount > 100:
-            print("candidates list is full, try next year.")
-            exit(0)
-        file_name = "cadidate_{}.json".format(files_amount)
-        d = ask_questions()
-        output_file = open(file_name, "w")
-        json.dump(d, output_file, indent = 6)
-        files_amount += 1
 
 
 def check_date(date):
@@ -96,9 +97,10 @@ def under_eighteen(birthday_date):
             if invalid_answer is None:
                 continue
             if not invalid_answer:
-                return False
+                break
         school_name = input("what is your school name: ")
         grade = input("What is your grade: ")
+        return parent_approval, school_name, grade
 
 
 def knows_candidates():
