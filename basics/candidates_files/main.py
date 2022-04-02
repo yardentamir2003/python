@@ -3,29 +3,39 @@ import re
 
 
 def main():
-    #files_amount = 0
     print("Welcome candidate!\nPlease enter the following details:")
-    #file_name = cadidate_XXX.json
-    #json_file = open("cadidate_XXX.json")
-    ask_questions()
+    files_amount = 001
+    for file in files:
+        file_name = "cadidate_{}.json".format(files_amount)
+        json_file = open(file_name)
+        ask_questions()
+
+def build_dictionary():
+    d = {}
+    d["first name"] = first_name
+    d["last name"] = last_name
+    d["birth day"] = birth_date
+    d["parent_approval"] = parent_approval
+    d["grade"] = grade
+    d["school"] school
 
 
 def ask_questions():
     first_name = input("What is your first name: ")
     last_name = input("What is your last name: ")
     while True:
-        birthday_date = input("What is your birth date: ")
-        invalid_date = check_date(birthday_date)
+        birth_date = input("What is your birth date: ")
+        invalid_date = check_date(birth_date)
         if invalid_date is None:
             continue
         if not invalid_date:
             break
-    under_eighteen(birthday_date)
+    under_eighteen(birth_date)
     birth_country = input("What is your birth country: ")
     if birth_country != "israel" and birth_country != "Israel":
         non_israel_function()
     courrent_country = input("What is your current country: ")
-    city =input("What is your current city: ")
+    city = input("What is your current city: ")
     street = input("What is your current street address: ")
     knows_candidates()
 
