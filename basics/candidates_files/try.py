@@ -18,8 +18,8 @@ def main():
 
 def ask_questions():
     d = {}
-    first_name = input("What is your first name: ")
-    last_name = input("What is your last name: ")
+    d["first_name"] = input("What is your first name: ")
+    d["last_name"] = input("What is your last name: ")
     while True:
         birth_date = input("What is your birth date: ")
         invalid_date = check_date(birth_date)
@@ -27,26 +27,21 @@ def ask_questions():
             continue
         if not invalid_date:
             break
+    d["birth day"] = birth_date
     parent_approval, school_name, grade = under_eighteen(birth_date)
     birth_country = input("What is your birth country: ")
     if birth_country != "israel" and birth_country != "Israel":
         israel_entrance, hebrew_speaker = non_israel_function()
-    current_country = input("What is your current country: ")
-    city = input("What is your current city: ")
-    street = input("What is your current street address: ")
+        d["israel entrance"] = israel_entrance
+        d["hebrew speaker"] = hebrew_speaker
+    d["current country"] = input("What is your current country: ")
+    d["city"] = input("What is your current city: ")
+    d["street"] = input("What is your current street address: ")
     candidates_names = knows_candidates()
-    d["first name"] = first_name
-    d["last name"] = last_name
-    d["birth day"] = birth_date
     d["parent_approval"] = parent_approval
     d["grade"] = grade
     d["school"] = school_name
     d["birth country"] = birth_country
-    d["israel entrance"] = israel_entrance
-    d["hebrew speaker"] = hebrew_speaker
-    d["current country"] = current_country
-    d["city"] = city
-    d["street"] = street
     d["familiar candidates"] = candidates_names
     print(d)
     return d
