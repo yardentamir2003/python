@@ -1,5 +1,7 @@
+import datetime
 import json
 import re
+from datetime import date
 
 
 def main():
@@ -22,7 +24,11 @@ def ask_questions():
     d["last_name"] = input("What is your last name: ")
     birth_date = get_date("Enter your birth date: ")
     d["birth date"] = birth_date
-    parent_approval, school_name, grade = under_eighteen(birth_date)
+    if under_eighteen(birth_date):
+        parent_approval, school_name, grade = questions_for_younger()
+        d["parent_approval"] = parent_approval
+        d["grade"] = grade
+        d["school"] = school_name
     birth_country = input("What is your birth country: ")
     if birth_country != "israel" and birth_country != "Israel":
         israel_entrance, hebrew_speaker = non_israel_function()
@@ -32,9 +38,6 @@ def ask_questions():
     d["city"] = input("What is your current city: ")
     d["street"] = input("What is your current street address: ")
     candidates_names = knows_candidates()
-    d["parent_approval"] = parent_approval
-    d["grade"] = grade
-    d["school"] = school_name
     d["birth country"] = birth_country
     d["familiar candidates"] = candidates_names
     print(d)
@@ -77,28 +80,39 @@ def non_israel_function():
     return israel_entrance, hebrew_speaker
 
 
-def under_eighteen(birthday_date):
-    year = birthday_date[:4]
-    year = int(year)
-    if year > 2004:
-        parent_approval = get_answer("Do we have parents approval (yes/no): ")
-        school_name = input("what is your school name: ")
-        grade = input("What is your grade: ")
-        return parent_approval, school_name, grade
+def under_eighteen(birth_date):
+    birth_year = birth_date[:4]
+    birth_year = int(birth_year)
+    age = datetime.datetime.now().year - birth_year
+    if age < 18:
+        return True
+    return False
+
+
+def questions_for_younger():
+    parent_approval = get_answer("Do we have parents approval (yes/no): ")
+    school_name = input("what is your school name: ")
+    grade = input("What is your grade: ")
+    return parent_approval, school_name, grade
 
 
 def knows_candidates():
     candidates_names = []
-    while True:
-        knows_candidates = get_answer("Do you know any candidates (yes/no): ")
-        if knows_candidates == "yes":
-            candidate_name = input("Who do you know: ")
-            candidates_names.append(candidate_name)
-                    continue
-            print("Well done. Your registration is complete.")
-            return candidates_names
-
-
+    knows_candidates = get_answer("Do you know any candidates (yes/no): ")
+    if knows_candidates == "yes":
+        candidate_name = input("Who do you know: ")
+        candidates_names.append(candidate_name)
+        while True:
+            knows_candidates = get_answer("Do you know any more candidates (yes/no): ")
+            if knows_candidates == "yes":
+                candidate_name = input("Who do you know: ")
+                candidates_names.append(candidate_name)
+            else:
+                break
+    print("Well done. Your registration is complete.")
+    if len(candidates_names) == 0:
+        return None
+    return candidates_names
 
 
 main()
