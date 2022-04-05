@@ -11,7 +11,7 @@ def parse_file():
         line_number += 1
 
     if problematic_lines == 0:
-        print("There are no cracks, no breaks, No mistakes in your code!")
+        print("There are no cracks, no breaks, and no mistakes in your code!")
 
 
 def parse_line(line, line_number):
