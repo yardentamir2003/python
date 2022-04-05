@@ -1,0 +1,10 @@
+yes,true
+no,true
+ yes,false
+no ,false
+NO,false
+Yes,false
+bla,false
+yesyes,false
+nonono,false
+yesno,false
