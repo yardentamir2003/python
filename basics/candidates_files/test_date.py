@@ -17,15 +17,18 @@ def parse_file():
 def parse_line(line, line_number):
     line = line.rstrip()
     divided_line = line.split(",")
-    formula = divided_line[1]
-    valid = divided_line[0]
+    valid = divided_line[1]
+    date = divided_line[0]
     if valid == "true":
         valid = True
     else:
         valid = False
 
-    if is_formula_valid(formula) != valid:
+    if is_date_valid(date) != valid:
         print("There's a problem with line number", line_number)
         return False
 
     return True
+
+
+parse_file()

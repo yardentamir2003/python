@@ -62,16 +62,15 @@ def is_date_valid(date):
     if len(match_date) == 0:
         return False
     full_date = match_date[0]
-    month = int(full_date[5:7])
+    month = full_date[5:7]
     day = full_date[8:]
     days_in_month = {"01": 31, "02": 29, "03": 31, "04": 30, "05": 31, "06": 30, "07": 31, "08": 31,
                      "09": 30, "10": 31, "11": 30, "12": 31}
     if month not in days_in_month:
         return False
-    else:
-        days_amount = days_in_month[month]
-        if days_amount < day or day == "00":
-            return False
+    days_amount = days_in_month[month]
+    if days_amount < int(day) or day == "00":
+        return False
     return True
 
 
@@ -131,4 +130,5 @@ def familiar_candidates():
     return candidates_names
 
 
-main()
+if __name__ == '__main__':
+    main()
