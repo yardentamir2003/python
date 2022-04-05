@@ -18,7 +18,7 @@ def main():
 
 
 def calculate_files_amount(directory):
-    files_amount = 1
+    files_amount = 0
     files = Path(directory).glob('*')
     for file in files:
         files_amount += 1
