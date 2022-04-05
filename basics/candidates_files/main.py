@@ -6,19 +6,19 @@ from pathlib import Path
 
 def main():
     print("Welcome candidate!\nPlease enter the following details:")
-    files_amount = calculate_files_amount()
-    if files_amount > 100:
+    directory = r"C:\Users\yarde\PycharmProjects\FirstProgram\basics\candidates_files\files"
+    files_amount = calculate_files_amount(directory)
+    if files_amount >= 100:
         print("candidates list is full, try next year.")
         exit(0)
-    file_name = "candidate_{}.json".format(files_amount)
+    file_name = r"{}\candidate_{}.json".format(directory, files_amount)
     details = ask_questions()
     with open(file_name, "w") as output_file:
         json.dump(details, output_file, indent=6)
 
 
-def calculate_files_amount():
-    files_amount = 0
-    directory = 'files'
+def calculate_files_amount(directory):
+    files_amount = 1
     files = Path(directory).glob('*')
     for file in files:
         files_amount += 1
@@ -46,7 +46,6 @@ def ask_questions():
     details["street"] = input("What is your current street address: ")
     details["birth country"] = birth_country
     details["familiar candidates"] = familiar_candidates()
-    print(details)
     return details
 
 
@@ -62,6 +61,17 @@ def is_date_valid(date):
     match_date = re.findall('^[0-9]{4}-[0-9]{2}-[0-9]{2}$', date)
     if len(match_date) == 0:
         return False
+    full_date = match_date[0]
+    month = int(full_date[5:7])
+    day = full_date[8:]
+    days_in_month = {"01": 31, "02": 29, "03": 31, "04": 30, "05": 31, "06": 30, "07": 31, "08": 31,
+                     "09": 30, "10": 31, "11": 30, "12": 31}
+    if month not in days_in_month:
+        return False
+    else:
+        days_amount = days_in_month[month]
+        if days_amount < day or day == "00":
+            return False
     return True
 
 
