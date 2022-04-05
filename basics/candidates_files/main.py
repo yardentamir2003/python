@@ -126,7 +126,7 @@ def familiar_candidates():
                 break
     print("Well done. Your registration is complete.")
     if len(candidates_names) == 0:
-        return None
+        return "none"
     return candidates_names
 
 
