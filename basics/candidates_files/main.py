@@ -71,6 +71,8 @@ def is_date_valid(date):
     days_amount = days_in_month[month]
     if days_amount < int(day) or day == "00":
         return False
+    if int(full_date[:4]) > datetime.datetime.now().year:
+        return False
     return True
 
 
