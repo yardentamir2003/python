@@ -1,0 +1,11 @@
+5d,true
+8a,true
+1e,true
+0a,false
+9d,false
+4f,false
+22,false
+aa,false
+d4,false
+55d,false
+5dd,false

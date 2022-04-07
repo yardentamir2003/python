@@ -2,21 +2,20 @@ import re
 
 
 def main():
-
-
-
+    get_flight_name()
+    get_seat_number()
 
 
 def get_flight_name():
     while True:
         flight_name = input("Please enter a flight name: ")
-        if valid_flight(flight_name):
+        if valid_flight_number(flight_name):
             return flight_name
         print("Please enter flight number in format xxxx-yy-xxxx")
 
 
-def valid_flight(flight_name):
-    match_flight_number = re.findall('^[0-9]{4}-[a-e]{2}-[0-9]{4}$', flight_name)
+def valid_flight_number(flight_name):
+    match_flight_number = re.findall('^[0-9]{4}-[a-z]{2}-[0-9]{4}$', flight_name)
     if len(match_flight_number) == 0:
         return False
     return True
@@ -31,7 +30,11 @@ def get_seat_number():
 
 
 def valid_seat_number(seat_number):
-    match_seat_number = re.findall('^[a-e][1-8]$', seat_number)
+    match_seat_number = re.findall('^[1-8][a-e]$', seat_number)
     if len(match_seat_number) == 0:
         return False
     return True
+
+
+if __name__ == '__main__':
+    main()

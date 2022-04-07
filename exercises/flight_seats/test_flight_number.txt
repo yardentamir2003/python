@@ -1,0 +1,12 @@
+1234-ab-5678,true
+4444-hh-5555,true
+2359-oq-0982,true
+11111-uu-1111,false
+222-uu-9999,false
+2222-sds-2222,false
+2222-f-9999,false
+3333-uu-999999,false
+6666-oo-0,false
+123r-99-2222,false
+abcd-aa-aaaa,false
+3333-33-66,false
