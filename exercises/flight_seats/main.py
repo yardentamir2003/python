@@ -4,12 +4,20 @@ import os
 
 def main():
     flight_name = get_flight_name()
-    file_name = flight_name
-    get_seat_number()
+    file_name = "{}.txt".format(flight_name)
+    seat_number = get_seat_number()
     file_list = os.listdir(r"C:\Users\yarde\PycharmProjects\FirstProgram\exercises\flight_seats\flights")
     if file_name in file_list:
-        with open (file_name, "a"):
+        with open(file_name, "a+") as output_file:
+            while not free_seat(output_file, seat_number):
+                print("This seat has already been taken. Please select other seat.")
+                seat_number = get_seat_number()
 
+
+
+
+    else:
+        open(file_name, "")
 
 
 def get_flight_name():
@@ -40,6 +48,18 @@ def valid_seat_number(seat_number):
     if len(match_seat_number) == 0:
         return False
     return True
+
+
+def free_seat(file, seat_number):
+    for line in file:
+        line = line.strip
+        if line == seat_number:
+            return False
+    return True
+
+
+
+
 
 
 if __name__ == '__main__':
