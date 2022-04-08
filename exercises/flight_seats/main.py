@@ -1,9 +1,15 @@
 import re
+import os
 
 
 def main():
-    get_flight_name()
+    flight_name = get_flight_name()
+    file_name = flight_name
     get_seat_number()
+    file_list = os.listdir(r"C:\Users\yarde\PycharmProjects\FirstProgram\exercises\flight_seats\flights")
+    if file_name in file_list:
+        with open (file_name, "a"):
+
 
 
 def get_flight_name():

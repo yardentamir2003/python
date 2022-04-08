@@ -11,7 +11,10 @@ def parse_file():
         line_number += 1
 
     if problematic_lines == 0:
-        print("Awesome Dude!")
+        print("Roses are red.\n"
+              "Violets are blue.\n"
+              "Python is great.\n"
+              "And so are you.\n")
 
 
 def parse_line(line, line_number):

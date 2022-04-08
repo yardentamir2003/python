@@ -3,8 +3,12 @@ Write a program that manages flight seats.
 The flight seats are managed in files. Each flight has its own file named by the <flight name>.txt
 Each file contains the ordered seats numbers, one number per line.
 You may only read from the file or append to the file.
-The program asks the user for the flight number. The flight number is composed of 4 digits,, minus, 2 letters, minus, 4 digits, for example: 0010-ab-8890. You should validate this format.
-Then the program asks the user for the seat number. If the seat had already been reserved, it notifies of this, and asks for another seat. If the seat is free, the program appends the seat number to the file, and notify the user that the reservation is done.
+The program asks the user for the flight number.
+ The flight number is composed of 4 digits,, minus, 2 letters, minus, 4 digits, for example: 0010-ab-8890.
+ You should validate this format.
+Then the program asks the user for the seat number.
+If the seat had already been reserved, it notifies of this, and asks for another seat.
+If the seat is free, the program appends the seat number to the file, and notify the user that the reservation is done.
 The seat number is composed of a number between 1 to 8, and a letter from a to e, for example: 5d.
 If all seats of a flight are already reserved, the program informs the user, and asks him to select a different flight.
 
