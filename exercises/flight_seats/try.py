@@ -33,12 +33,14 @@ def valid_seat_number(seat_number):
 
 
 def free_seat(file_name, seat_number):
-    with open(file_name, "r") as file:
-        for line in file:
-            line = line.strip()
-            if line == seat_number:
-                return False
-        return True
+    file = pathlib.Path(file_name)
+    if file.exists():
+        with open(file_name, "r") as file:
+            for line in file:
+                line = line.strip()
+                if line == seat_number:
+                    return False
+    return True
 
 
 def append_to_file(file_name, seat_number):
@@ -46,8 +48,6 @@ def append_to_file(file_name, seat_number):
         if free_seat(file_name, seat_number):
             file.write(seat_number)
             file.write("\n")
-            return "Your seat has been ordered successfully, Thanks for choosing Jordi Airlines."
-        return "this seat has already been reserved, please select another seat."
 
 
 def full_flight(file_name):
@@ -55,27 +55,34 @@ def full_flight(file_name):
     if file.exists():
         with open(file_name, "r") as file:
             line_amount = len(file.readlines())
-            if line_amount == 3:
+            if line_amount == 40:
                 return True
     return False
 
 
-def main():
+def get_flight_file_name():
     while True:
         flight_name = get_flight_name()
         directory = r"C:\Users\yarde\PycharmProjects\python\exercises\flight_seats\flights"
         file_name = r"{}\{}".format(directory, flight_name)
-        if full_flight(file_name):
-            print("all seats of the flight have already been reserved, please select another flight.")
-        else:
-            break
-    file_name = r"{}\{}".format(directory, flight_name)
+        if not full_flight(file_name):
+            return file_name
+        print("all seats of the flight have already been reserved, please select another flight.")
+
+
+def set_seat_in_flight_file(file_name):
     while True:
         seat_number = get_seat_number()
-        order = append_to_file(file_name, seat_number)
-        print(order)
-        if order == "Your seat has been ordered successfully, Thanks for choosing Jordi Airlines.":
-            break
+        if free_seat(file_name, seat_number):
+            append_to_file(file_name, seat_number)
+            print("Your seat has been ordered successfully, Thanks for choosing Jordi Airlines.")
+            return
+        print("this seat has already been reserved, please select another seat.")
+
+
+def main():
+    file_name = get_flight_file_name()
+    set_seat_in_flight_file(file_name)
 
 
 if __name__ == '__main__':

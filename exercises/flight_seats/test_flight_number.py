@@ -1,22 +1,6 @@
 from main import valid_flight_number
 
 
-def parse_file():
-    file = open("test_flight_number.txt")
-    line_number = 1
-    problematic_lines = 0
-    for line in file:
-        if not parse_line(line, line_number):
-            problematic_lines += 1
-        line_number += 1
-
-    if problematic_lines == 0:
-        print("Roses are red.\n"
-              "Violets are blue.\n"
-              "Python is great.\n"
-              "And so are you.\n")
-
-
 def parse_line(line, line_number):
     line = line.rstrip()
     divided_line = line.split(",")
@@ -32,6 +16,22 @@ def parse_line(line, line_number):
         return False
 
     return True
+
+
+def parse_file():
+    file = open("test_flight_number.txt")
+    line_number = 1
+    problematic_lines = 0
+    for line in file:
+        if not parse_line(line, line_number):
+            problematic_lines += 1
+        line_number += 1
+
+    if problematic_lines == 0:
+        print("Roses are red.\n"
+              "Violets are blue.\n"
+              "Python is great.\n"
+              "And so are you.\n")
 
 
 parse_file()
