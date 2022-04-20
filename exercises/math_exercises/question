@@ -1,0 +1,21 @@
+Present a menu to the user with the following options:
+
+1. Solve exercises
+2. Check exercises
+3. Quit
+
+In case the user choose option 1:
+
+You have an input.txt file with math exercises in each line.
+The line has the following format:
+Number operator number
+Number can have one or more digits (integer and not float).
+Operator can be one of + - * /
+Create a file named output.txt with answer in each line for each exercise.
+In case the exercise format is invalid, print “wrong exercise” in the relevant line in output.txt
+
+In case the user choose option 2:
+Check the existing input.txt, and output.txt, and print for each line if the user had created the correct answer. In case of problems, print the line numbers with the problems.
+
+In case the user choose 3: end the program
+Notice: after choosing option 1 and 2, show the menu again. End the program only if the user chooses option 3.
