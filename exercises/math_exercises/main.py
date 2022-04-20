@@ -7,7 +7,7 @@ def main():
         if option_number == "3":
             break
         if option_number == "1":
-            ...
+            solve_exercises()
         if option_number == "2":
             ...
 
@@ -29,19 +29,20 @@ def check_option_number(option_number):
 
 
 def solve_exercises():
-    exercises = get_exercises()
-    with open("output.txt", "a") as file:
+    questions = get_questions()
+    with open(r"C:\Users\yarde\PycharmProjects\python\exercises\math_exercises\output.txt", "a") as file:
+        for question in questions:
+            answer = input(question)
+            file.write(answer)
 
-        file.write(answer)
 
-
-def get_exercises():
-    exercises = []
+def get_questions():
+    questions = []
     with open("input.txt", "r") as file:
         for line in file:
             line.strip()
-            exercises.append(line)
-        return exercises
+            questions.append(line)
+        return questions
 
 # def check_exercises():
 #     with open
