@@ -34,6 +34,7 @@ def solve_exercises():
         for question in questions:
             answer = input(question)
             file.write(answer)
+            file.write("\n")
 
 
 def get_questions():
