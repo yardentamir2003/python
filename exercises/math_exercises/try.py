@@ -7,7 +7,7 @@ def main():
         if option_number == "3":
             break
         if option_number == "1":
-            solve_exercises()
+            write_answers_file()
         if option_number == "2":
             check_exercises()
 
@@ -28,16 +28,24 @@ def check_option_number(option_number):
     return True
 
 
+def write_answers_file():
+    answers = solve_exercises()
+    with open("output.txt", "w") as file:
+        for answer in answers:
+            file.write(answer)
+            file.write("\n")
+
+
 def solve_exercises():
     questions = get_questions()
-    with open("output.txt", "w") as file:
-        for question in questions:
-            if valid_exercise(question):
-                answer = str(eval(question))
-                file.write(answer)
-            else:
-                file.write("wrong exercise")
-            file.write("\n")
+    answers = []
+    for question in questions:
+        if valid_exercise(question):
+            answer = str(eval(question))
+        else:
+            answer = "wrong exercise"
+        answers.append(answer)
+    return answers
 
 
 def get_questions():
@@ -57,13 +65,12 @@ def valid_exercise(exercise):
 
 
 def check_exercises():
-    solve_exercises()
-    expected_results = get_results("output.txt")
-    actual_results = get_results("users_output.txt")
+    expected_results = solve_exercises()
+    actual_results = get_results("output.txt")
     index = 0
-    while index <= len(actual_results):
+    while index < len(actual_results):
         if expected_results[index] != actual_results[index]:
-            print("Should have been {}, but got {}".format(expected_results[index], actual_results[index]))
+            print("There is a problem with line number {}. Should have been {}, but got {}".format(index+1, expected_results[index], actual_results[index]))
         index += 1
 
 
