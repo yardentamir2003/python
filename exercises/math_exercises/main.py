@@ -32,10 +32,12 @@ def solve_exercises():
     questions = get_questions()
     with open(r"C:\Users\yarde\PycharmProjects\python\exercises\math_exercises\output.txt", "a") as file:
         for question in questions:
-            answer = input(question)
-            file.write(answer)
+            if valid_exercise(question):
+                answer = eval(question)
+                file.write(answer)
+            else:
+                file.write("wrong exercise")
             file.write("\n")
-
 
 def get_questions():
     questions = []
@@ -44,6 +46,13 @@ def get_questions():
             line.strip()
             questions.append(line)
         return questions
+
+
+def valid_exercise(exercise):
+    match_exercise = re.findall('^[0-9]+[-+*/]{1}[0-9]+$', exercise)
+    if len(match_exercise) == 0:
+        return False
+    return True
 
 # def check_exercises():
 #     with open
