@@ -9,7 +9,7 @@ def main():
         if option_number == "1":
             solve_exercises()
         if option_number == "2":
-            ...
+            check_exercises()
 
 
 def get_option_number():
@@ -33,30 +33,47 @@ def solve_exercises():
     with open(r"C:\Users\yarde\PycharmProjects\python\exercises\math_exercises\output.txt", "a") as file:
         for question in questions:
             if valid_exercise(question):
-                answer = eval(question)
+                answer = str(eval(question))
                 file.write(answer)
             else:
                 file.write("wrong exercise")
             file.write("\n")
 
+
 def get_questions():
     questions = []
     with open("input.txt", "r") as file:
         for line in file:
-            line.strip()
+            line = line.strip()
             questions.append(line)
         return questions
 
 
 def valid_exercise(exercise):
-    match_exercise = re.findall('^[0-9]+[-+*/]{1}[0-9]+$', exercise)
+    match_exercise = re.findall('^[0-9]+[-+*/][0-9]+$', exercise)
     if len(match_exercise) == 0:
         return False
     return True
 
-# def check_exercises():
-#     with open
-#
+
+def check_exercises():
+    solve_exercises()
+    expected_results = get_results("output.txt")
+    actual_results = get_results("users_output.txt")
+    index = 0
+    while index <= len(actual_results):
+        if expected_results[index] != actual_results[index]:
+            print("Should have been {}, but got {}".format(expected_results[index], actual_results[index]))
+        index += 1
+
+
+def get_results(file_name):
+    results = []
+    with open(r"C:\Users\yarde\PycharmProjects\python\exercises\math_exercises\{}".format(file_name), "r") as file:
+        for line in file:
+            line = line.strip()
+            results.append(line)
+        return results
 
 
 if __name__ == '__main__':
