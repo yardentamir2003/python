@@ -68,10 +68,28 @@ def check_exercises():
     expected_results = solve_exercises()
     actual_results = get_results("output.txt")
     index = 0
+    mistakes = False
+    mistakes_number = 0
+    wrong_exercises = False
+    wrong_exercises_number = 0
     while index < len(actual_results):
-        if expected_results[index] != actual_results[index]:
-            print("There is a problem with line number {}. Should have been {}, but got {}".format(index+1, expected_results[index], actual_results[index]))
+        if expected_results[index] == "wrong exercise":
+            print("Wrong exercise in line number {}".format(index+1))
+            wrong_exercises_number += 1
+        elif expected_results[index] != actual_results[index]:
+            print("Mistake in line number {}. Should have been {}, but got {}".format(index+1, expected_results[index], actual_results[index]))
+            mistakes = True
+            mistakes_number += 1
         index += 1
+    if mistakes:
+        grade = calculate_grade(index, mistakes_number)
+    else:
+        grade = 100
+    if wrong_exercises:
+        final_grade = add_factor(grade, wrong_exercises_number, index)
+    else:
+        final_grade = grade
+    print("Your grade is {}".format(final_grade))
 
 
 def get_results(file_name):
@@ -81,6 +99,22 @@ def get_results(file_name):
             line = line.strip()
             results.append(line)
         return results
+
+
+def calculate_grade(index, mistakes_number):
+    line_amount = index
+    grade_per_question = 100 / line_amount
+    lost_points = mistakes_number * grade_per_question
+    grade = 100 - lost_points
+    return grade
+
+
+def add_factor(grade, wrong_exercises_number, index):
+    line_amount = index
+    grade_per_question = 100 / line_amount
+    lost_points = wrong_exercises_number * grade_per_question
+    final_grade = grade + lost_points
+    return final_grade
 
 
 if __name__ == '__main__':
