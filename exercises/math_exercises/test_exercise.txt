@@ -1,0 +1,12 @@
+3+2,true
+44-9,true
+2345678+45678,true
+345678-45678,true
+4*7,true
+5/9,true
+60/1093,true
+248--2,false
+-4-8,false
+*61,false
+3 + 3 ,false
+  6-3,false

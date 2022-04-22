@@ -22,7 +22,7 @@ def get_option_number():
 
 
 def check_option_number(option_number):
-    match_option_number = re.findall('^1|2|3$', option_number)
+    match_option_number = re.findall('^(?:1|2|3)$', option_number)
     if len(match_option_number) == 0:
         return False
     return True
@@ -69,8 +69,10 @@ def check_exercises():
     actual_results = get_results("output.txt")
     index = 0
     while index < len(actual_results):
-        if expected_results[index] != actual_results[index]:
-            print("There is a problem with line number {}. Should have been {}, but got {}".format(index+1, expected_results[index], actual_results[index]))
+        if expected_results[index] == "wrong exercise":
+            print("Wrong exercise in line number {}.".format(index+1))
+        elif expected_results[index] != actual_results[index]:
+            print("Mistake in line number {}. Should have been {}, but got {}".format(index+1, expected_results[index], actual_results[index]))
         index += 1
 
 

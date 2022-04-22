@@ -70,7 +70,6 @@ def check_exercises():
     index = 0
     mistakes = False
     mistakes_number = 0
-    wrong_exercises = False
     wrong_exercises_number = 0
     while index < len(actual_results):
         if expected_results[index] == "wrong exercise":
@@ -82,14 +81,10 @@ def check_exercises():
             mistakes_number += 1
         index += 1
     if mistakes:
-        grade = calculate_grade(index, mistakes_number)
+        grade = calculate_grade(index, mistakes_number, wrong_exercises_number)
     else:
         grade = 100
-    if wrong_exercises:
-        final_grade = add_factor(grade, wrong_exercises_number, index)
-    else:
-        final_grade = grade
-    print("Your grade is {}".format(final_grade))
+    print("Your grade is {}".format(grade))
 
 
 def get_results(file_name):
@@ -101,20 +96,12 @@ def get_results(file_name):
         return results
 
 
-def calculate_grade(index, mistakes_number):
-    line_amount = index
+def calculate_grade(index, mistakes_number, wrong_exercises_number):
+    line_amount = index - wrong_exercises_number
     grade_per_question = 100 / line_amount
     lost_points = mistakes_number * grade_per_question
     grade = 100 - lost_points
     return grade
-
-
-def add_factor(grade, wrong_exercises_number, index):
-    line_amount = index
-    grade_per_question = 100 / line_amount
-    lost_points = wrong_exercises_number * grade_per_question
-    final_grade = grade + lost_points
-    return final_grade
 
 
 if __name__ == '__main__':
