@@ -1,7 +1,7 @@
 import json
-import urllib.request
-from urllib.request import urlopen
 import ssl
+import urllib.request
+
 # Ignore SSL certificate errors
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
