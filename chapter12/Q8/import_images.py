@@ -1,9 +1,7 @@
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-import ssl
-import json
 import ssl
 import urllib.request
+
+from bs4 import BeautifulSoup
 
 
 def main():
@@ -50,19 +48,12 @@ def download_image(src):
     position = src.rfind("/")
     if "?" in src:
         questionmark_position = src.find("?")
-        image_name = src[position+1:questionmark_position]
+        image_name = src[position + 1:questionmark_position]
     else:
-        image_name = src[position+1:]
+        image_name = src[position + 1:]
     print(image_name)
     with open(image_name, "wb") as file:
         file.write(body)
 
 
-
-
-
-
-
 main()
-
-
