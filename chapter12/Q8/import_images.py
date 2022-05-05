@@ -23,7 +23,7 @@ def main():
     soup = BeautifulSoup(body, "html.parser")
     tags = soup('img')
 
-    for i in range(5):
+    for i in range(6):
         image = tags[i]
         download_image(image['src'])
 
@@ -33,7 +33,10 @@ def download_image(src):
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
-    url = "https://www.tapuz.co.il{}".format(src)
+    if src.startswith("http"):
+        url = src
+    else:
+        url = "https://www.tapuz.co.il{}".format(src)
     print(url)
     req = urllib.request.Request(
         url,
