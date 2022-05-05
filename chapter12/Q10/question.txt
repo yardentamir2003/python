@@ -1,0 +1,3 @@
+Checkout this site:
+https://goquotes.docs.apiary.io/#
+And write a program that prints 10 random quotes

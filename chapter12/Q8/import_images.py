@@ -20,6 +20,7 @@ def main():
 
     response = urllib.request.urlopen(req)
     body = response.read().decode('utf-8')
+
     soup = BeautifulSoup(body, "html.parser")
     tags = soup('img')
 
