@@ -1,0 +1,3 @@
+Q6:
+Bonus:
+Search google for a FREE REST API to get the current weather in Kiryat Ono, and write a program to print it.

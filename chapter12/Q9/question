@@ -1,0 +1,5 @@
+Checkout this site:
+http://worldtimeapi.org/
+Read the details, and write a program to get the time from this site,
+and compare it to the time on the local machine,
+and print both times, and the difference between the time in milliseconds.

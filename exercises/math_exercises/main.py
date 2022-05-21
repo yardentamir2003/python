@@ -22,7 +22,7 @@ def get_option_number():
 
 
 def check_option_number(option_number):
-    match_option_number = re.findall('^(?:1|2|3)$', option_number)
+    match_option_number = re.findall('^[123]$', option_number)
     if len(match_option_number) == 0:
         return False
     return True
@@ -37,7 +37,7 @@ def write_answers_file():
 
 
 def solve_exercises():
-    questions = get_questions()
+    questions = get_questions('input.txt')
     answers = []
     for question in questions:
         if valid_exercise(question):
@@ -48,9 +48,9 @@ def solve_exercises():
     return answers
 
 
-def get_questions():
+def get_questions(file_name):
     questions = []
-    with open("input.txt", "r") as file:
+    with open(file_name, "r") as file:
         for line in file:
             line = line.strip()
             questions.append(line)
@@ -58,7 +58,7 @@ def get_questions():
 
 
 def valid_exercise(exercise):
-    match_exercise = re.findall('^[0-9]+[-+*/][0-9]+$', exercise)
+    match_exercise = re.findall("^\\d+[-+*/]\\d+$", exercise)
     if len(match_exercise) == 0:
         return False
     return True
@@ -70,15 +70,17 @@ def check_exercises():
     index = 0
     while index < len(actual_results):
         if expected_results[index] == "wrong exercise":
-            print("Wrong exercise in line number {}.".format(index+1))
+            print("Wrong exercise in line number {}.".format(index + 1))
         elif expected_results[index] != actual_results[index]:
-            print("Mistake in line number {}. Should have been {}, but got {}".format(index+1, expected_results[index], actual_results[index]))
+            print(
+                "Mistake in line number {}. Should have been {}, but got {}".format(index + 1, expected_results[index],
+                                                                                    actual_results[index]))
         index += 1
 
 
 def get_results(file_name):
     results = []
-    with open(r"C:\Users\yarde\PycharmProjects\python\exercises\math_exercises\{}".format(file_name), "r") as file:
+    with open(file_name, "r") as file:
         for line in file:
             line = line.strip()
             results.append(line)

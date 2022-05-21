@@ -1,0 +1,89 @@
+
+Q1:
+Create a logs investigation program.
+Use OOD (Object Oriented Design).
+The program should be user friendly, and provide informative errors for any mistake that the user might make.
+
+Make sure to include unit tests for as many functions as possible.
+Do not use test.txt files, but write the unit tests only in the code.
+
+The program starts with the following menu:
+
+1. Add logs from file
+2. Show logs
+3. Update logs
+4. Save logs to file
+5. Quit
+
+Main option #1
+===========
+The program asks for a log file path, and loads all the logs to the memory.
+In case there are already logs entries in the memory, the log entries from the file are ADDED to the existing.
+In case of error of loading of a specific log line, show error with full details, and then skip the next line and try to continue the loading.
+After loading the logs from the file, show the menu again.
+
+
+The log file contains lines, each line is a JSON formatted message.
+Example of a log line (will be in a single line, but for readability is shown in multiple lines):
+{
+  "timestamp": 1651654827,
+  "severity": "WARN",
+  "service": "gatekeeper",
+  "user": {
+    "firstName": "John",
+    "lastName":"Doe"
+  },
+  "message": "Out of memory in process"
+}
+
+Timestamp is the epoch time (seconds passed since 1/1/1970 GMT)
+Severity is one of: ERROR,WARN,INFO,VERBOSE
+Service is the name of the related component which logged the log entry
+User contains first name and last name. The user entry is optional - and will appear only on some of the log entries
+Message is the description of the issue
+
+
+Main option #2
+============
+Show the following menu:
+
+Total 45467 messages in the memory.
+1. List all logs and all fields
+2. List only specific fields
+3. Select timezone for logs(Current time zone is UTC)
+3. Back to the main menu
+
+
+#1 - will print all the logs and all of the fields
+#2 - will ask the user to select which fields to show, and print all the logs entries with the related fields. For example:
+No fields are selected, Select fields to show. (timestamp,severity,service,gatekeeper,firstName,lastName,message):
+> timestamp
+Selected fields [timestamp], Select fields to show, or click Enter to show the list.
+(severity,service,gatekeeper,firstName,lastName,message):
+> message
+Selected fields [timestamp,message], Select fields to show, or click Enter to show the list.
+(severity,service,gatekeeper,firstName,lastName):
+#3 will allow the user to select UTC or local time zone
+
+Main option #3
+===========
+Show the following menu:
+
+Total 45467 messages in the memory.
+1. Delete messages by field value
+2. Delete all messages
+3. Keep message by field value
+
+Example for #1:
+Enter field to delete by (timestamp,severity,service,gatekeeper,firstName,lastName,message):
+> service
+Enter value to delete by:
+> gatekeeper
+345 messages deleted
+
+(and then back to the menu)
+
+
+Main option #4
+===========
+The program asks for a log file path, and saves all the logs to the file.
