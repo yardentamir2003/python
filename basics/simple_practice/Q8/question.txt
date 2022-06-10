@@ -1,0 +1,33 @@
+Create a program that asks the user for a file name.
+If the file name is a text file (the file name ends with “.txt”), print all the lines, and the line number of all the lines that do not end with a dot.
+If the file is a numbers file ( the file name ends with “.numbers”) print the line number, and the average of the numbers in each line, and the average of all of the averages.
+
+For example:
+
+words.txt
+In 965 AD, Odin, king of Asgard, wages war against the Frost Giants of Jotunheim
+The Asgardian warriors defeat the Frost Giants.
+In the present, Odin's son Thor prepares to ascend to the throne of Asgard
+His brother Loki, attempts to retrieve the Casket. Against Odin's order,
+Thor travels to Jotunheim to confront Laufey, accompanied by Loki.
+
+Marvel_movies.numbers
+Superman 1978 1980 1983 1987 2006
+Thor 2011 2013 2017 2022
+Black Panther 2018 2022
+Toy Story 1995 1999 2010 2019
+
+
+Enter file name: words.txt
+The lines with missing dot at the end are:
+Line 1: In 965 AD, Odin, king of Asgard, wages war against the Frost Giants of Jotunheim
+Line 3: In the present, Odin's son Thor prepares to ascend to the throne of Asgard
+Line 4: His brother Loki, attempts to retrieve the Casket. Against Odin's order,
+
+Enter file name: Marvel_movies.numbers
+The average for each line is:
+Line 1: 1986.8
+Line 2: 2015.75
+Line 3: 2020
+Line 4: 2005.75
+The average of all the averages is: 2007.075
