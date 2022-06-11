@@ -1,0 +1,50 @@
+Create a program that draws a board with a player coin on it.
+The board size is 4X4.
+Empty place is shown as O.
+The player coin is shown as X.
+Every time, ask for directions from the user: up, left, right, down, or quit.
+In case the move is valid, draw the new board.
+Otherwise, print an error message.
+The coin in the start is located in the upper right corner.
+
+For example:
+
+XOOO
+OOOO
+OOOO
+OOOO
+
+Enter your move: down
+
+OOOO
+XOOO
+OOOO
+OOOO
+
+Enter your move: down
+
+OOOO
+OOOO
+XOOO
+OOOO
+
+Enter your move: down
+
+OOOO
+OOOO
+OOOO
+XOOO
+
+Enter your move: down
+Error: unable to move down.
+Enter your move: left
+Error: unable to move left.
+Enter your move: right
+
+OOOO
+OOOO
+OOOO
+OXOO
+
+Enter your move: quit
+Bye bye, have a nice day.
