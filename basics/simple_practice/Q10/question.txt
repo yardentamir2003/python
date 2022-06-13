@@ -1,0 +1,52 @@
+=== Question 010_casino ===
+Create a program that manages a casino.
+The following menu is displayed:
+
+—----------------------------
+1. Add new player
+2. Show balances
+3. Play
+4. Quit
+Enter your selection:
+—----------------------------
+
+If #1 is selected:
+
+—----------------------------
+Enter your name: Alon
+Welcome Alon, we randomized for your entry amount of 75$.
+—----------------------------
+
+The entry cash amount should use 50$ + random of another cash between 0$ - 50$.
+If #2 is selected, print the balances of all players:
+
+—----------------------------
+The balances are:
+Alon 75$
+Ariel 100$
+Ifat 20$
+—----------------------------
+
+
+If #3 is selected:
+
+—----------------------------
+Enter your name: Alon
+How much money do you want to bet on? 45
+Rolling the dice…… The dice shows 6.
+You won 135$
+—----------------------------
+
+
+If the name entered does not exist in the existing players, show an error, and ask for the name again.
+If the amount of money is higher than the balance of the player, show an error, and ask for the bet again.
+Random the dice result.
+If the result is 1,2,3: the bet is lost.
+If the result is 4,5: the bet is returned to the player without any profit.
+If the result is 6: the 3*bet is returned to the player.
+
+
+Hints for solution:
+- Use a dictionary to save the players balance.
+- Create a new function for each menu option.
+- Use random to return integers, and not decimal numbers.
