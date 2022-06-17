@@ -7,7 +7,7 @@ def main():
     while True:
         option = input("1. Add new player\n2. Show balances\n3. Play\n4. Quit\nEnter your selection: ")
         # if valid_option(option):
-        if option == 1 or option == 2 or option == 3 or option == 4:
+        if option == 1 or 2 or 3 or 4:
             choose_option(option, names_dict)
 
 
@@ -44,31 +44,33 @@ def option_two(names_dict):
 
 
 def option_three(names_dict):
+    if valid_name(names_dict):
+        if valid_money_amount(names_dict):
+            roll_dice(bet_money, name, names_dict)
+
+
+def valid_name(names_dict):
     while True:
         name = input("Enter your name: ")
         if name in names_dict.keys():
-            break
-        else:
-            print("Error. The name entered does not exist in the existing players.")
+            return True
+#         can i return true, name? because i need to use it in roll dice! also bet_money
 
+def valid_money_amount(names_dict):
     while True:
         bet_money = int(input("How much money do you want to bet on? "))
         players_balance = names_dict[name]
         if bet_money <= players_balance:
-            break
-        else:
-            print("Error. The amount of money is higher than the balance of the player")
-
-    roll_dice(bet_money, name, names_dict)
+            return True
 
 
 def roll_dice(bet_money, name, names_dict):
     dice_result = random.randint(1, 6)
     print("Rolling the dice…… The dice shows {}.".format(dice_result))
-    if dice_result == 1 or dice_result == 2 or dice_result == 3:
+    if dice_result == 1 or 2 or 3:
         print("You lost {}$".format(bet_money))
         names_dict[name] -= bet_money
-    if dice_result == 4 or dice_result == 5:
+    if dice_result == 4 or 5:
         print("the bet is returned without any profit.")
     if dice_result == 6:
         bet_money = bet_money * 3
