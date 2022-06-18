@@ -7,9 +7,10 @@ def main():
     while True:
         option = input("1. Add new player\n2. Show balances\n3. Play\n4. Quit\nEnter your selection: ")
         # if valid_option(option):
-        if option == 1 or option == 2 or option == 3 or option == 4:
+        if option == "1" or option == "2" or option == "3" or option == "4":
             choose_option(option, names_dict)
-
+        else:
+            print("please enter 1/2/3/4.")
 
 # def valid_option(option):
 #     match = re.findall('^(?:1|2|3|4)$"', option)
@@ -40,6 +41,7 @@ def option_one(names_dict):
 def option_two(names_dict):
     print("The balances are:")
     for key, value in names_dict.items():
+        value = "{}$".format(value)
         print(key, value)
 
 
@@ -73,7 +75,7 @@ def roll_dice(bet_money, name, names_dict):
     if dice_result == 6:
         bet_money = bet_money * 3
         print("You won {}$!".format(bet_money))
-        names_dict[name] = bet_money
+        names_dict[name] += bet_money
 
 
 main()
