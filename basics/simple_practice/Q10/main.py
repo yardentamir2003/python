@@ -1,22 +1,22 @@
 import random
-# import re
+import re
 
 
 def main():
     names_dict = {}
     while True:
         option = input("1. Add new player\n2. Show balances\n3. Play\n4. Quit\nEnter your selection: ")
-        # if valid_option(option):
-        if option == "1" or option == "2" or option == "3" or option == "4":
+        if valid_option(option):
             choose_option(option, names_dict)
         else:
             print("please enter 1/2/3/4.")
 
-# def valid_option(option):
-#     match = re.findall('^(?:1|2|3|4)$"', option)
-#     if len(match) == 0:
-#         return False
-#     return True
+
+def valid_option(option):
+    match = re.findall('^[1234]$', option)
+    if len(match) == 0:
+        return False
+    return True
 
 
 def choose_option(option, names_dict):
