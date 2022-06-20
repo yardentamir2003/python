@@ -22,16 +22,21 @@ def valid_option(option):
 def choose_option(option, names_dict):
     if option == "1":
         option_one(names_dict)
-    if option == "2":
+    elif option == "2":
         option_two(names_dict)
-    if option == "3":
+    elif option == "3":
         option_three(names_dict)
-    if option == "4":
+    elif option == "4":
         exit(1)
 
 
 def option_one(names_dict):
-    player_name = input("Enter your name: ")
+    while True:
+        player_name = input("Enter your name: ")
+        if player_name in names_dict:
+            print("The player already exists. Try another name.")
+        else:
+            break
     random_cash = random.randint(0, 50)
     entry_cash_amount = 50 + random_cash
     print("Welcome {}, we randomized for your entry amount of {}$.".format(player_name, entry_cash_amount))
@@ -56,7 +61,9 @@ def option_three(names_dict):
     while True:
         bet_money = int(input("How much money do you want to bet on? "))
         players_balance = names_dict[name]
-        if bet_money <= players_balance:
+        if bet_money <= 0:
+            print("Error. negative amount of money.")
+        elif bet_money <= players_balance:
             break
         else:
             print("Error. The amount of money is higher than the balance of the player")
