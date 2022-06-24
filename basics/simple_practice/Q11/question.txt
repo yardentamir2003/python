@@ -1,0 +1,109 @@
+=== Question 011_the_queen ===
+Create a game that plays a queen on a chess board.
+When starting the game, show the chess board:
+
+
+8 OOOOOOOO
+7 OOOOOOOO
+6 OOOOOOOO
+5 OOOOOOOO
+4 OOOOOOOO
+3 OOOOOOOO
+2 OOOOOOOO
+1 XOOOOOOO
+   ABCDEFGH
+
+
+The queen is marked as X.
+Empty squares are marked as O.
+Ask the user for the queen target destination.
+The destination is compound of a letter (A-H) and a number (1-8),
+Show error if it is invalid.
+Notice: the queen can move straight and diagonally for any amount of squares.
+If the move is valid, animate the move, one square each second, use time.sleep(1) to delay the animation.
+If the user enters quit - finish the game.
+
+For example:
+
+Enter the queen target destination: H2
+Error: H2 is not a valid move.
+Enter the queen target destination: kuku
+Error: kuku is not a valid board location.
+Enter the queen target destination: A4
+
+8 OOOOOOOO
+7 OOOOOOOO
+6 OOOOOOOO
+5 OOOOOOOO
+4 OOOOOOOO
+3 OOOOOOOO
+2 XOOOOOOO
+1 OOOOOOOO
+   ABCDEFGH
+
+The queen is still moving…
+
+8 OOOOOOOO
+7 OOOOOOOO
+6 OOOOOOOO
+5 OOOOOOOO
+4 OOOOOOOO
+3 XOOOOOOO
+2 OOOOOOOO
+1 OOOOOOOO
+   ABCDEFGH
+
+The queen is still moving…
+
+
+8 OOOOOOOO
+7 OOOOOOOO
+6 OOOOOOOO
+5 OOOOOOOO
+4 XOOOOOOO
+3 OOOOOOOO
+2 OOOOOOOO
+1 OOOOOOOO
+   ABCDEFGH
+
+The queen rests.
+
+Enter the queen target destination: D7
+
+8 OOOOOOOO
+7 OOOOOOOO
+6 OOOOOOOO
+5 OXOOOOOO
+4 OOOOOOOO
+3 OOOOOOOO
+2 OOOOOOOO
+1 OOOOOOOO
+   ABCDEFGH
+
+The queen is still moving…
+
+8 OOOOOOOO
+7 OOOOOOOO
+6 OOXOOOOO
+5 OOOOOOOO
+4 OOOOOOOO
+3 OOOOOOOO
+2 OOOOOOOO
+1 OOOOOOOO
+   ABCDEFGH
+
+The queen is still moving…
+
+8 OOOOOOOO
+7 OOOXOOOO
+6 OOOOOOOO
+5 OOOOOOOO
+4 OOOOOOOO
+3 OOOOOOOO
+2 OOOOOOOO
+1 OOOOOOOO
+   ABCDEFGH
+
+Enter the queen target destination: quit
+
+Okay, bye bye
