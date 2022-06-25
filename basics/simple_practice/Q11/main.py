@@ -23,7 +23,7 @@ def main():
                 print("The queen rests.")
             else:
                 print("The queen is still moving…")
-                time.sleep(1)
+                time.sleep(2)
 
 
 def draw_board(row_queen, col_queen):
