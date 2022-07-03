@@ -1,0 +1,62 @@
+=== Question 012_actors ===
+Create an actors database.
+Show the following main menu:
+
+—------------------
+1. List actors by age
+2. Add actor
+3. Delete actor
+4. Delete movie
+5. Quit
+—------------------
+
+If option #1 is selected:
+
+—------------------
+Enter actors age range: 30-50
+Matching actors are:
+Chris Evans (3 movies)
+Chris Hemsworth (5 movies)
+—------------------
+
+If option #2 is selected:
+
+—------------------
+Enter the actor’s name: Chris Evans
+Enter the actor’s birth year: 1981
+Enter the actor’s movies, or click Enter to complete: Lightyear
+Enter the actor’s movies, or click Enter to complete: Don’t Look Up
+Enter the actor’s movies, or click Enter to complete: Free Guy
+Enter the actor’s movies, or click Enter to complete:
+OK, actor Chris Evans added, and 3 movies specified.
+—------------------
+
+If option #3 is selected:
+
+—------------------
+Enter actor name:Chris Evans
+OK, the actor Chris Evans was deleted
+—------------------
+
+If option #4 is selected:
+
+—------------------
+Enter movie name:Lightyear
+OK, the movie Lightyear was deleted, 3 actors were affected by this change.
+—------------------
+
+If option #5 is selected:
+
+—------------------
+OK, have a good one!
+—------------------
+
+
+Notice:
+1. Implement the actors database as dictionary of ‘Actor’ object
+The Actor class should contain the fields name, birth year, movies
+The Actor class should contain the methods:
+- is_in_age_range(from_age,to_age)
+- is_in_movie(move_name)
+2. The main menu is repeatedly presented until the user selects Quit
+3. Validate any user input, and show friendly error messages. This includes invalid number selection, removal of non existing actor, add of an already existing actor, and anything similar
