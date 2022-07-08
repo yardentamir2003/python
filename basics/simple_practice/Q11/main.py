@@ -19,6 +19,16 @@ def valid_move(row_queen, col_queen, target_row, target_col):
         return "up"
     elif target_col == col_queen and target_row < row_queen:
         return "down"
+    elif target_col - col_queen == target_row - row_queen:
+        if col_queen < target_col and row_queen < target_row:
+            return "up right"
+        else:
+            return "down left"
+    elif col_queen + row_queen == target_col + target_row:
+        if col_queen > target_col and row_queen < target_row:
+            return "up left"
+        else:
+            return "down right"
     else:
         return False
 
@@ -46,6 +56,58 @@ def draw_board(row_queen, col_queen):
             else:
                 print("o", end="")
         print()
+
+
+def move_down_right(row_queen, col_queen, target_row, target_col):
+    while col_queen < target_col and row_queen > target_row:
+        col_queen += 1
+        row_queen -= 1
+        draw_board(row_queen, col_queen)
+        if col_queen == target_col and row_queen == target_row:
+            print("The queen rests.")
+        else:
+            print("The queen is still moving…")
+            time.sleep(1)
+    return col_queen, row_queen
+
+
+def move_up_left(row_queen, col_queen, target_row, target_col):
+    while col_queen > target_col and row_queen < target_row:
+        col_queen -= 1
+        row_queen += 1
+        draw_board(row_queen, col_queen)
+        if col_queen == target_col and row_queen == target_row:
+            print("The queen rests.")
+        else:
+            print("The queen is still moving…")
+            time.sleep(1)
+    return col_queen, row_queen
+
+
+def move_down_left(row_queen, col_queen, target_row, target_col):
+    while col_queen > target_col and row_queen > target_row:
+        col_queen -= 1
+        row_queen -= 1
+        draw_board(row_queen, col_queen)
+        if col_queen == target_col and row_queen == target_row:
+            print("The queen rests.")
+        else:
+            print("The queen is still moving…")
+            time.sleep(1)
+    return col_queen, row_queen
+
+
+def move_up_right(row_queen, col_queen, target_row, target_col):
+    while col_queen < target_col and row_queen < target_row:
+        col_queen += 1
+        row_queen += 1
+        draw_board(row_queen, col_queen)
+        if col_queen == target_col and row_queen == target_row:
+            print("The queen rests.")
+        else:
+            print("The queen is still moving…")
+            time.sleep(1)
+    return col_queen, row_queen
 
 
 def move_right(row_queen, col_queen, target_col):
@@ -111,7 +173,7 @@ def main():
         target_row, target_col = parse_location(board_location)
         move = valid_move(row_queen, col_queen, target_row, target_col)
 
-        if not valid_move(row_queen, col_queen, target_row, target_col):
+        if not move:
             print("{} is not a valid move.".format(board_location))
             continue
         if move == "right":
@@ -122,6 +184,14 @@ def main():
             row_queen = move_up(row_queen, col_queen, target_row)
         elif move == "down":
             row_queen = move_down(row_queen, col_queen, target_row)
+        elif move == "up right":
+            col_queen, row_queen = move_up_right(row_queen, col_queen, target_row, target_col)
+        elif move == "down left":
+            col_queen, row_queen = move_down_left(row_queen, col_queen, target_row, target_col)
+        elif move == "up left":
+            col_queen, row_queen = move_up_left(row_queen, col_queen, target_row, target_col)
+        elif move == "down right":
+            col_queen, row_queen = move_down_right(row_queen, col_queen, target_row, target_col)
 
 
 main()
