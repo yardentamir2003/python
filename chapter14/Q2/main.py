@@ -36,6 +36,7 @@ def option_two():
         if valid_birth_year(actor_birth_year):
             break
     actor_age = calculate_age(actor_birth_year)
+    actor = Actor(actor_name, actor_age)
 
 
 def calculate_age(actor_birth_year):

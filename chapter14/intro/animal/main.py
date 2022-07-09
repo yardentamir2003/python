@@ -1,4 +1,4 @@
-from chapter14.intro.animal import Animal
+from chapter14.intro.animal.animal import Animal
 
 
 def main():
