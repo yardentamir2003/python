@@ -1,5 +1,6 @@
 import datetime
 import re
+from actor import Actor
 
 
 def main():
@@ -14,12 +15,15 @@ def main():
             #     option_three()
             # if option == "4":
             #     option_four()
+            if option == "5":
+                print("OK, have a good one!")
+                break
             else:
                 print("Invalid input, please enter 1/2/3/4")
 
 
 def valid_option(option):
-    match = re.findall('^[1234]$', option)
+    match = re.findall('^[12345]$', option)
     if len(match) == 0:
         return False
     return True
@@ -27,7 +31,10 @@ def valid_option(option):
 
 def option_two():
     actor_name = input("Enter the actor’s name: ")
-    actor_birth_year = input("Enter the actor’s birth year: ")
+    while True:
+        actor_birth_year = input("Enter the actor’s birth year: ")
+        if valid_birth_year(actor_birth_year):
+            break
     actor_age = calculate_age(actor_birth_year)
 
 
@@ -37,5 +44,11 @@ def calculate_age(actor_birth_year):
     print(age)
     return age
 
+
+def valid_birth_year(actor_birth_year):
+    match = re.findall('^\d{4}$', actor_birth_year)
+    if len(match) == 0:
+        return False
+    return True
 
 main()
