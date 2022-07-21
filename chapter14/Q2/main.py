@@ -11,9 +11,10 @@ def main():
             #     option_one()
             if option == "2":
                 option_two(actors_list)
-                break
-            # if option == "3":
-            #     option_three()
+                continue
+            if option == "3":
+                option_three(actors_list)
+                continue
             # if option == "4":
             #     option_four()
             if option == "5":
@@ -50,6 +51,17 @@ def option_two(actors_list):
 
     actors_list.append(actor)
     # actor.is_in_age_range()
+
+
+def option_three(actors_list):
+    while True:
+        deleted_actor = input("Enter actor name: ")
+        if deleted_actor in actors_list:
+            break
+        else:
+            print("{} doesn't exist in the actors list.".format(deleted_actor))
+    print("OK, the actor {} was deleted".format(deleted_actor))
+
 
 
 
