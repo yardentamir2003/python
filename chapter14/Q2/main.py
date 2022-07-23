@@ -1,5 +1,7 @@
 import re
 
+from chapter14.Q2.actor import Actor
+
 
 def main():
     actors_list = []
@@ -44,6 +46,10 @@ def option_one(actors_list):
             break
         else:
             print("Please enter age range in format Ddd-Ddd, when d is optional.")
+    splitted_age_range = age_range.split("-")
+    from_age = splitted_age_range[0]
+    to_age = splitted_age_range[1]
+    # actor.is_in_age_range(from_age, to_age)
 
 
 def option_two(actors_list):
@@ -67,7 +73,6 @@ def option_two(actors_list):
             movie_count += 1
 
     actors_list.append(actor)
-    # actor.is_in_age_range()
 
 
 def option_three(actors_list):
