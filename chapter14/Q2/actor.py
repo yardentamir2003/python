@@ -10,7 +10,9 @@ class Actor:
     def is_in_age_range(self, from_age, to_age):
         birth_year = int(self.birth_year)
         age = datetime.datetime.now().year - birth_year
-        print(age)
+        if from_age <= age <= to_age:
+            return True
+        return False
 
 
     # def is_in_movie(self, move_name):
