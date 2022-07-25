@@ -7,7 +7,8 @@ from chapter14.Q2.actor import Actor
 def main():
     actors_list = []
     while True:
-        option = input("1. List actors by age\n2. Add actor\n3. Delete actor\n4. Delete movie\n5. Quit\nChoose option: ")
+        option = input(
+            "1. List actors by age\n2. Add actor\n3. Delete actor\n4. Delete movie\n5. Quit\nChoose option: ")
         if valid_option(option):
             if option == "1":
                 option_one(actors_list)
@@ -18,8 +19,9 @@ def main():
             if option == "3":
                 option_three(actors_list)
                 continue
-            # if option == "4":
-            #     option_four()
+            if option == "4":
+                option_four(actors_list)
+                continue
             if option == "5":
                 print("OK, have a good one!")
                 break
@@ -41,7 +43,17 @@ def valid_age_range(age_range):
     return True
 
 
+def valid_birth_year(actor_birth_year):
+    match = re.findall('^\d{4}$', actor_birth_year)
+    if len(match) == 0:
+        return False
+    return True
+
+
 def option_one(actors_list):
+    if len(actors_list) == 0:
+        print("Actors list is empty.")
+        return
     while True:
         age_range = input("Enter actors age range: ")
         if valid_age_range(age_range):
@@ -97,11 +109,31 @@ def option_three(actors_list):
         print("{} doesn't exist in the actors list.".format(deleted_actor))
 
 
-def valid_birth_year(actor_birth_year):
-    match = re.findall('^\d{4}$', actor_birth_year)
-    if len(match) == 0:
-        return False
-    return True
+def option_four(actors_list):
+    if len(actors_list) == 0:
+        print("Actors list is empty.")
+        return
+    movie_name = input("Enter movie name: ")
+    affected_actors = 0
+    for actor in actors_list:
+        if actor.is_in_movie(movie_name):
+            delete_movie(actors_list, movie_name)
+            affected_actors += 1
+    if affected_actors == 0:
+        print("The movie doesn't exist.")
+    elif affected_actors == 1:
+        print(
+            "OK, the movie {} was deleted, 1 actor was affected by this change.".format(movie_name))
+    else:
+        print(
+            "OK, the movie {} was deleted, {} actors were affected by this change.".format(movie_name, affected_actors))
+
+
+def delete_movie(actors_list, movie_name):
+    for actor in actors_list:
+        for movie in actor.movies:
+            if movie == movie_name:
+                actor.movies.remove(movie_name)
 
 
 main()

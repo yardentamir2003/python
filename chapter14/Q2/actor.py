@@ -14,5 +14,8 @@ class Actor:
             return True
         return False
 
-
-    # def is_in_movie(self, move_name):
+    def is_in_movie(self, move_name):
+        for movie in self.movies:
+            if movie == move_name:
+                return True
+        return False
