@@ -25,8 +25,8 @@ def main():
             if option == "5":
                 print("OK, have a good one!")
                 break
-            else:
-                print("Invalid input, please enter 1/2/3/4/5")
+        else:
+            print("Invalid input, please enter 1/2/3/4/5")
 
 
 def valid_option(option):
@@ -75,6 +75,10 @@ def option_one(actors_list):
 
 def option_two(actors_list):
     actor_name = input("Enter the actor’s name: ")
+    for actor in actors_list:
+        if actor_name == actor.name:
+            print("The actor {} already exist.".format(actor_name))
+            return
     while True:
         actor_birth_year = input("Enter the actor’s birth year: ")
         if valid_birth_year(actor_birth_year):
@@ -100,6 +104,7 @@ def option_three(actors_list):
     while True:
         if len(actors_list) == 0:
             print("The actors list is empty. Can't delete actors.")
+            return
         deleted_actor = input("Enter actor name: ")
         for actor in actors_list:
             if deleted_actor == actor.name:
@@ -119,14 +124,14 @@ def option_four(actors_list):
         if actor.is_in_movie(movie_name):
             delete_movie(actors_list, movie_name)
             affected_actors += 1
-    if affected_actors == 0:
-        print("The movie doesn't exist.")
-    elif affected_actors == 1:
-        print(
-            "OK, the movie {} was deleted, 1 actor was affected by this change.".format(movie_name))
-    else:
+    if affected_actors != 0 and affected_actors != 1:
         print(
             "OK, the movie {} was deleted, {} actors were affected by this change.".format(movie_name, affected_actors))
+    elif affected_actors == 0:
+        print("The movie doesn't exist.")
+    else:
+        print(
+            "OK, the movie {} was deleted, 1 actor was affected by this change.".format(movie_name))
 
 
 def delete_movie(actors_list, movie_name):
