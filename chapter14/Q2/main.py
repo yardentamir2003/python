@@ -122,8 +122,8 @@ def option_four(actors_list):
     affected_actors = 0
     for actor in actors_list:
         if actor.is_in_movie(movie_name):
-            delete_movie(actors_list, movie_name)
             affected_actors += 1
+            actor.movies.remove(movie_name)
     if affected_actors != 0 and affected_actors != 1:
         print(
             "OK, the movie {} was deleted, {} actors were affected by this change.".format(movie_name, affected_actors))
@@ -132,13 +132,6 @@ def option_four(actors_list):
     else:
         print(
             "OK, the movie {} was deleted, 1 actor was affected by this change.".format(movie_name))
-
-
-def delete_movie(actors_list, movie_name):
-    for actor in actors_list:
-        for movie in actor.movies:
-            if movie == movie_name:
-                actor.movies.remove(movie_name)
 
 
 main()
