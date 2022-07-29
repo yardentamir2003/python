@@ -1,0 +1,8 @@
+=== Question 013_actors2 ===
+Copy the previous question files.
+Create a new file named actors.py
+The file should include a new class named Actors.
+The Actors class should contain the field actors_list.
+The Actors class should contain the methods: list_by_age(), add_actor(), delete_actor(), delete_movie().
+Notice that the actors_list should not be sent as a parameter to functions, since it is a field.
+Use the new Actors class from the main.
