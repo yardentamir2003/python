@@ -1,10 +1,9 @@
 import re
-from chapter14.Q3 import actors
 from chapter14.Q3.actors import Actors
 
 
 def main():
-    actors_list = Actors()
+    actors = Actors()
     while True:
         option = input(
             "1. List actors by age\n2. Add actor\n3. Delete actor\n4. Delete movie\n5. Quit\nChoose option: ")
