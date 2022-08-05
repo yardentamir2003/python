@@ -1,0 +1,8 @@
+=== Question 014_the_queen2 ===
+Copy question 11 files.
+As you have noticed, we send the queen_row and the queen_col to almost all functions.
+Let’s use objects here as well, like we did on question 13.
+Create a class named Board.
+The class should have the following fields: queen_row, queen_col
+Move all the functions from the main to be methods on the Board class,
+and remove the queen_row, queen_col from the methods (use the fields instead).
