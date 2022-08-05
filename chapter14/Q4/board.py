@@ -58,7 +58,7 @@ class Board:
             return False
 
     def move(self, target_row, target_col):
-        if move == "right":
+        if self.move == "right":
             self.col_queen = self.move_right(target_col)
         elif move == "left":
             self.col_queen = self.move_left(target_col)
