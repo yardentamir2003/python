@@ -14,12 +14,7 @@ def main():
             print("{} is not a valid board location.".format(board_location))
             continue
         target_row, target_col = parse_location(board_location)
-
-        if not board.valid_move(target_row, target_col):
-            print("{} is not a valid move.".format(board_location))
-            continue
-
-        board.move(target_row, target_col)
+        board.move(target_row, target_col, board_location)
 
 
 def valid_board_location(board_location):

@@ -33,7 +33,6 @@ class Board:
             else:
                 print("The queen is still moving…")
                 time.sleep(1)
-        return self.col_queen, self.row_queen
 
     def valid_move(self, target_row, target_col):
         if target_col > self.col_queen and target_row == self.row_queen:
@@ -57,23 +56,28 @@ class Board:
         else:
             return False
 
-    def move(self, target_row, target_col):
-        if self.move == "right":
-            self.col_queen = self.move_right(target_col)
-        elif move == "left":
-            self.col_queen = self.move_left(target_col)
-        elif move == "up":
-            self.row_queen = self.move_up(target_row)
-        elif move == "down":
-            self.row_queen = self.move_down(target_row)
-        elif move == "up right":
-            self.col_queen, self.row_queen = self.move_up_right(target_row, target_col)
-        elif move == "down left":
-            self.col_queen, self.row_queen = self.move_down_left(target_row, target_col)
-        elif move == "up left":
-            self.col_queen, self.row_queen = self.move_up_left(target_row, target_col)
-        elif move == "down right":
-            self.col_queen, self.row_queen = self.move_down_right(target_row, target_col)
+    def move(self, target_row, target_col, board_location):
+        direction = self.valid_move(target_row, target_col)
+        if not direction:
+            print("{} is not a valid move.".format(board_location))
+            return
+        elif direction == "right":
+            self.move_right(target_col)
+        elif direction == "left":
+            self.move_left(target_col)
+        elif direction == "up":
+            self.move_up(target_row)
+        elif direction == "down":
+            self.move_down(target_row)
+        elif direction == "up right":
+            self.move_up_right(target_row, target_col)
+        elif direction == "down left":
+            self.move_down_left(target_row, target_col)
+        elif direction == "up left":
+            self.move_up_left(target_row, target_col)
+        elif direction == "down right":
+            self.move_down_right(target_row, target_col)
+        self.draw_board()
 
     def move_up_left(self, target_row, target_col):
         while self.col_queen > target_col and self.row_queen < target_row:
@@ -85,7 +89,6 @@ class Board:
             else:
                 print("The queen is still moving…")
                 time.sleep(1)
-        return self.col_queen, self.row_queen
 
     def move_down_left(self, target_row, target_col):
         while self.col_queen > target_col and self.row_queen > target_row:
@@ -97,7 +100,6 @@ class Board:
             else:
                 print("The queen is still moving…")
                 time.sleep(1)
-        return self.col_queen, self.row_queen
 
     def move_up_right(self, target_row, target_col):
         while self.col_queen < target_col and self.row_queen < target_row:
@@ -109,7 +111,6 @@ class Board:
             else:
                 print("The queen is still moving…")
                 time.sleep(1)
-        return self.col_queen, self.row_queen
 
     def move_right(self, target_col):
         while self.col_queen < target_col:
@@ -120,7 +121,6 @@ class Board:
             else:
                 print("The queen is still moving…")
                 time.sleep(1)
-        return self.col_queen
 
     def move_left(self, target_col):
         while self.col_queen > target_col:
@@ -131,7 +131,6 @@ class Board:
             else:
                 print("The queen is still moving…")
                 time.sleep(1)
-        return self.col_queen
 
     def move_up(self, target_row):
         while self.row_queen < target_row:
@@ -142,7 +141,6 @@ class Board:
             else:
                 print("The queen is still moving…")
                 time.sleep(1)
-        return self.row_queen
 
     def move_down(self, target_row):
         while self.row_queen > target_row:
@@ -153,4 +151,3 @@ class Board:
             else:
                 print("The queen is still moving…")
                 time.sleep(1)
-        return self.row_queen
