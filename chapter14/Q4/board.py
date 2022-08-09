@@ -61,7 +61,7 @@ class Board:
         if not direction:
             print("{} is not a valid move.".format(board_location))
             return
-        elif direction == "right":
+        if direction == "right":
             self.move_right(target_col)
         elif direction == "left":
             self.move_left(target_col)
