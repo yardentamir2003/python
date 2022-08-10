@@ -1,0 +1,73 @@
+You have a big army of minions and you need to keep track of them.
+You decide to create a management system for that purpose.
+
+You will keep a list of objects of class Minion.
+
+The Minion class has the following fields:
+- name
+- eyes_amount
+- job  (if the job is None - it means that the minion is unemployed)
+
+The Minion class has the following methods:
+- constructor - receives a json string of the minion
+- is_eyes_amount(number) - returns boolean ( check self.eyes_amount equals to the number)
+- is_unemployed() - return boolean
+- assign_job(job_name)
+- complete_job()
+- get_json_string() - return json string of the minion, see example in the file below
+
+You need to present a menu with the following options:
+
+1. Add minions from file
+2. Save minions to file
+3. List minions
+4. Assign job
+5. Report job complete
+6. Quit
+
+The file format for add minions and for save minions, is a list of lines.
+Each line contains a json string of the minion, for example:
+
+
+{“name”:”Bob”, “eyes_amount”: 1, “job”:”rob the bank”}
+{“name”:”Dave”, “eyes_amount”: 2, “job”:”paint in purple”}
+{“name”:”Jerry”, “eyes_amount”: 2, “job”:”sing banana song”}
+
+For menu option #1 - add minions from the file to the list.
+For menu option #2 - save minions from the list to the file.
+For menu option #3 - print the minions names
+For menu option #4 - see the following example:
+
+What is the job? Sing Tiki Tiki Babeloo
+How many eyes are required? 2
+OK, the list of unemployed minions with 2 eyes are:
+Dave,Jerry
+Type the minion name: Dave
+OK, Dave is now working on job Sing Tiki Tiki Babeloo
+
+For menu option #5 - see the following example:
+
+Who completed his job? Dave
+OK, Dave is now unemployed
+
+
+
+Notice: to load json data, see the following example:
+import json
+json_data = json.loads(line_from_file)
+print(“name is {}”.format(json_data[“name”]))
+print(“eyes is {}”.format(json_data[“eyes_amount”]))
+אופציה 1
+בתוך הclass הוא הconstractor
+
+To create json string, see the following example:
+import json
+my_name=”alon”
+my_eyes = 2
+json_data = {“name”:my_name,”eyes_amount”: my_eyes}
+line_for_file = json.dumps(json_data)
+אופציה 2
+בתוך הclass בתוך המטהוד - get_json_string()
+
+להוסיף מיניונים מקובץ קיים לזיכרון (ליצור רשימה של מיניונים - שהם אובייקטים)
+היוזר לא יכול להוסיף מינוינים בעצמו אלא להעביר אותם בין קבצים (רק את הקיימים) ולשנות להם עבודות
