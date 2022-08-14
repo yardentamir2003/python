@@ -1,15 +1,18 @@
 import re
 from chapter14.Q5.minion import Minion
+import os.path
+from os import path
 
 
 def main():
-    # minion = Minion(name, eyes_amount, job)
+    minions = []
     while True:
         option = input(
             "1. List actors by age\n2. Add actor\n3. Delete actor\n4. Delete movie\n5. Quit\nChoose option: ")
         if valid_option(option):
             if option == "1":
-                add_minions_from_file()
+                file_name = get_file_name()
+                minions = add_minions_from_file(file_name)
                 continue
             if option == "2":
                 save_minions_to_file()
@@ -29,13 +32,13 @@ def main():
             print("Invalid input, please enter 1/2/3/4/5/6")
 
 
-def get_file_name(file_name):
-    with open file asy
-        minions_list = []
-        for line in file:
-            m = Minion(line)
-        minions_list.append(m)
-    return minions_list
+def get_file_name():
+    while True:
+        file_name = input("Enter file name: ")
+        if path.exists(file_name):
+            return file_name
+        print("Can not find file named {} in directory. Please try again.".format(file_name))
+
 
 def valid_option(option):
     match = re.findall('^[12345]$', option)
@@ -44,8 +47,14 @@ def valid_option(option):
     return True
 
 
-def add_minions_from_file():
-    pass
+def add_minions_from_file(file_name):
+    with open(file_name, "r") as file:
+        minions_list = []
+        for line in file:
+            line = line.strip()
+            m = Minion(line)
+            minions_list.append(m)
+    return minions_list
 
 
 def save_minions_to_file():

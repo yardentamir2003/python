@@ -1,5 +1,4 @@
 import json
-import pathlib
 
 
 class Minion:
@@ -8,6 +7,12 @@ class Minion:
         self.name = json_data['name']
         self.eyes_amount = json_data['eyes_amount']
         self.job = json_data['job']
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name
 
     def is_eyes_amount(self, number):
         if self.eyes_amount == number:
@@ -20,5 +25,10 @@ class Minion:
         return False
 
     def assign_job(self, job_name):
+        pass
+
     def complete_job(self):
+        pass
+
     def get_json_string(self):
+        pass
