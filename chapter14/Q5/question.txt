@@ -9,7 +9,7 @@ The Minion class has the following fields:
 - job  (if the job is None - it means that the minion is unemployed)
 
 The Minion class has the following methods:
-- constructor - receives a json string of the minion
+- constructor - receives a json string of the minion ?
 - is_eyes_amount(number) - returns boolean ( check self.eyes_amount equals to the number)
 - is_unemployed() - return boolean
 - assign_job(job_name)
