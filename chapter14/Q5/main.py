@@ -8,20 +8,21 @@ def main():
     minions = []
     while True:
         option = input(
-            "1. List actors by age\n2. Add actor\n3. Delete actor\n4. Delete movie\n5. Quit\nChoose option: ")
+            "1. Add minions from file\n2. Save minions to file\n3. List minions\n4. Assign job\n5. Report job complete\n6. Quit\nChoose option: ")
         if valid_option(option):
             if option == "1":
                 file_name = get_file_name()
-                minions = add_minions_from_file(file_name)
+                added_minions = add_minions_from_file(file_name)
+                minions.extend(added_minions)
                 continue
             if option == "2":
                 save_minions_to_file()
                 continue
             if option == "3":
-                list_minions()
+                list_minions(minions)
                 continue
             if option == "4":
-                assign_job()
+                assign_job(minions)
                 continue
             if option == "5":
                 report_job_complete()
@@ -61,19 +62,36 @@ def save_minions_to_file():
     pass
 
 
-def list_minions():
-    pass
+def list_minions(minions):
+    for minion in minions:
+        print(minion)
 
 
-def assign_job():
+def assign_job(minions):
     required_job = input("What is the job? ")
     required_eyes_amount = input("How many eyes are required? ")
-    matcing_minions = matching_minions(required_eyes_amount)
-    print("OK, the list of unemployed minions with {} eyes are:\n".format(required_eyes_amount))
-    # print(matching_minions)
-    selected_minion = input("Type the minion name: ")
-    print("OK, {} is now working on job {}".format(selected_minion, required_job))
+    match_list = matching_minions(required_eyes_amount, minions)
+    print("OK, the list of unemployed minions with {} eyes are:".format(required_eyes_amount))
+    for minion in match_list:
+        print(minion)
+    if len(match_list) == 0:
+        print("No matching minions were found.")
+        return
+    while True:
+        selected_minion = input("Type the minion name: ")
+        if selected_minion in match_list:
+            print("OK, {} is now working on job {}".format(selected_minion, required_job))
+            return
+        else:
+            print("Please select a minion from the list above.")
 
+
+def matching_minions(required_eyes_amount, minions):
+    match_list = []
+    for minion in minions:
+        if Minion.is_unemployed(minion) and Minion.is_eyes_amount(minion, required_eyes_amount):
+            match_list.append(minion)
+    return match_list
 
 def report_job_complete():
     pass

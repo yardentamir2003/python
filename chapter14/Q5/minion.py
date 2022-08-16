@@ -20,7 +20,7 @@ class Minion:
         return False
 
     def is_unemployed(self):
-        if self.job is None:
+        if self.job == "none":
             return True
         return False
 
