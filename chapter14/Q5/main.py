@@ -1,6 +1,5 @@
 import re
 from chapter14.Q5.minion import Minion
-import os.path
 from os import path
 
 
@@ -84,6 +83,7 @@ def assign_job(minions):
         selected_minion = input("Type the minion name: ")
         for minion in match_list:
             if minion.name == selected_minion:
+                Minion.assign_job(minion, required_job)
                 print("OK, {} is now working on job {}".format(selected_minion, required_job))
                 return
             else:
@@ -100,11 +100,22 @@ def matching_minions(required_eyes_amount, minions):
 
 def report_job_complete(minions):
     finisher_minion = input("Who completed his job? ")
+    for minion in minions:
+        if minion.name == finisher_minion:
+            Minion.complete_job(minion)
+            print("OK, {} is now unemployed".format(finisher_minion))
     minions_names = []
     for minion in minions:
         minions_names.append(minion.name)
     if finisher_minion not in minions_names:
-        print("{} doesn't exist in the minions list.")
+        print("{} doesn't exist in the minions list.".format(finisher_minion))
+        return
+    for minion in minions:
+        if minion.job == "none":
+            print("{} is already unemployed.".format(finisher_minion))
+            return
+
+
 
 
 

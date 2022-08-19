@@ -25,10 +25,10 @@ class Minion:
         return False
 
     def assign_job(self, job_name):
-        pass
+        self.job = job_name
 
     def complete_job(self):
-        pass
+        self.job = "none"
 
     def get_json_string(self):
         pass
