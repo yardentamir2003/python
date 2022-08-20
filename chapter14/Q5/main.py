@@ -1,3 +1,4 @@
+import json
 import re
 from chapter14.Q5.minion import Minion
 from os import path
@@ -17,7 +18,7 @@ def main():
                 print("Minions from {} were added successfully.".format(file_name))
                 continue
             if option == "2":
-                save_minions_to_file()
+                save_minions_to_file(minions)
                 continue
             if option == "3":
                 list_minions(minions)
@@ -60,8 +61,15 @@ def add_minions_from_file(file_name):
     return minions_list
 
 
-def save_minions_to_file():
-    pass
+def save_minions_to_file(minions):
+    file_name = input("Choose a file name: ")
+    for minion in minions:
+        minion_name = minion.name
+        minion_job = minion.job
+        minion_eyes = minion.eyes_amount
+        json_data = {"name": minion_name, "eyes_amount" : minion_eyes, "job": minion_job}
+        with open(file_name, "w") as file:
+            line = json.dumps(json_data)
 
 
 def list_minions(minions):
@@ -114,11 +122,6 @@ def report_job_complete(minions):
         if minion.job == "none":
             print("{} is already unemployed.".format(finisher_minion))
             return
-
-
-
-
-
 
 
 main()
