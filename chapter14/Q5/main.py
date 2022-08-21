@@ -69,7 +69,7 @@ def save_minions_to_file(minions):
             line = json.dumps(json_data)
             file.write(line)
             file.write("\n")
-    print("file named {}, was created successfully.")
+    print("file named {}, was created successfully.".format(file_name))
 
 
 def list_minions(minions):
@@ -109,6 +109,9 @@ def report_job_complete(minions):
     finisher_minion = input("Who completed his job? ")
     for minion in minions:
         if minion.name == finisher_minion:
+            if minion.job == "none":
+                print("{} is already unemployed.".format(finisher_minion))
+                return
             Minion.complete_job(minion)
             print("OK, {} is now unemployed".format(finisher_minion))
     minions_names = []
@@ -116,11 +119,6 @@ def report_job_complete(minions):
         minions_names.append(minion.name)
     if finisher_minion not in minions_names:
         print("{} doesn't exist in the minions list.".format(finisher_minion))
-        return
-    for minion in minions:
-        if minion.job == "none":
-            print("{} is already unemployed.".format(finisher_minion))
-            return
 
 
 main()
