@@ -31,4 +31,8 @@ class Minion:
         self.job = "none"
 
     def get_json_string(self):
-        pass
+        name = self.name
+        eyes_amount = self.eyes_amount
+        job = self.job
+        json_data = {"name": name, "eyes_amount": eyes_amount, "job": job}
+        return json_data

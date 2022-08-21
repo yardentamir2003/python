@@ -45,7 +45,7 @@ def get_file_name():
 
 
 def valid_option(option):
-    match = re.findall('^[12345]$', option)
+    match = re.findall('^[123456]$', option)
     if len(match) == 0:
         return False
     return True
@@ -64,12 +64,12 @@ def add_minions_from_file(file_name):
 def save_minions_to_file(minions):
     file_name = input("Choose a file name: ")
     for minion in minions:
-        minion_name = minion.name
-        minion_job = minion.job
-        minion_eyes = minion.eyes_amount
-        json_data = {"name": minion_name, "eyes_amount" : minion_eyes, "job": minion_job}
-        with open(file_name, "w") as file:
+        json_data = Minion.get_json_string(minion)
+        with open(file_name, "a") as file:
             line = json.dumps(json_data)
+            file.write(line)
+            file.write("\n")
+    print("file named {}, was created successfully.")
 
 
 def list_minions(minions):
@@ -94,8 +94,7 @@ def assign_job(minions):
                 Minion.assign_job(minion, required_job)
                 print("OK, {} is now working on job {}".format(selected_minion, required_job))
                 return
-            else:
-                print("Please select a minion from the list above.")
+        print("Please select a minion from the list above.")
 
 
 def matching_minions(required_eyes_amount, minions):
