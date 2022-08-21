@@ -1,4 +1,3 @@
-import json
 import re
 from chapter14.Q5.minion import Minion
 from os import path
@@ -64,10 +63,9 @@ def add_minions_from_file(file_name):
 def save_minions_to_file(minions):
     file_name = input("Choose a file name: ")
     for minion in minions:
-        json_data = Minion.get_json_string(minion)
+        json_string = Minion.create_json_string(minion)
         with open(file_name, "a") as file:
-            line = json.dumps(json_data)
-            file.write(line)
+            file.write(json_string)
             file.write("\n")
     print("file named {}, was created successfully.".format(file_name))
 

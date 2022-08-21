@@ -30,9 +30,10 @@ class Minion:
     def complete_job(self):
         self.job = "none"
 
-    def get_json_string(self):
+    def create_json_string(self):
         name = self.name
         eyes_amount = self.eyes_amount
         job = self.job
         json_data = {"name": name, "eyes_amount": eyes_amount, "job": job}
-        return json_data
+        line = json.dumps(json_data)
+        return line
