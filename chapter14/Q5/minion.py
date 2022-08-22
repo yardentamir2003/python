@@ -6,7 +6,10 @@ class Minion:
         json_data = json.loads(line)
         self.name = json_data['name']
         self.eyes_amount = json_data['eyes_amount']
-        self.job = json_data['job']
+        if "job" in json_data:
+            self.job = json_data['job']
+        else:
+            self.job = None
 
     def __str__(self):
         return self.name
@@ -20,7 +23,7 @@ class Minion:
         return False
 
     def is_unemployed(self):
-        if self.job == "none":
+        if self.job is None:
             return True
         return False
 
@@ -28,7 +31,7 @@ class Minion:
         self.job = job_name
 
     def complete_job(self):
-        self.job = "none"
+        self.job = None
 
     def create_json_string(self):
         name = self.name
