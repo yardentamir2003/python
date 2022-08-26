@@ -1,0 +1,2 @@
+{"name":"Bob", "eyes_amount": 1, "job":"rob the bank"}
+{"name":"Dave", "eyes_amount": 2}
