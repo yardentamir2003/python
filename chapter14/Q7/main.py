@@ -1,5 +1,7 @@
 import re
 
+from chapter14.Q7.books import Books
+
 
 def main():
     while True:
@@ -8,7 +10,7 @@ def main():
             if option == "1":
                 books_inventory_management()
             else:
-                system_readers_managment_system()
+                system_readers_management_system()
 
         else:
             print("Invalid input, please enter 1/2.")
@@ -20,10 +22,20 @@ def valid_option(option):
         return False
     return True
 
+def valid_number(number):
+    match = re.findall("^[123]$", number)
+    if len(match) == 0:
+        return False
+    return True
 
 def books_inventory_management():
-    pass
+    books = Books()
+    number = input("What would you like to do:\n1. Add new book\n2. delete book\n3. Search book")
+    if valid_number(number):
+        if number == "1":
 
 
-def system_readers_managment_system():
+
+
+def system_readers_management_system():
     pass
