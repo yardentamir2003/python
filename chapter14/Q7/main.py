@@ -44,6 +44,5 @@ def books_inventory_management():
         print("Invalid input, please enter 1/2/3.")
 
 
-
 def system_readers_management_system():
     pass
