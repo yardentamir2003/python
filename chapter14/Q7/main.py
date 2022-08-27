@@ -22,18 +22,26 @@ def valid_option(option):
         return False
     return True
 
+
 def valid_number(number):
     match = re.findall("^[123]$", number)
     if len(match) == 0:
         return False
     return True
 
+
 def books_inventory_management():
     books = Books()
     number = input("What would you like to do:\n1. Add new book\n2. delete book\n3. Search book")
     if valid_number(number):
         if number == "1":
-
+            ...
+        elif number == "2":
+            ...
+        else:
+            ...
+    else:
+        print("Invalid input, please enter 1/2/3.")
 
 
 
