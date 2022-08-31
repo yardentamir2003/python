@@ -38,9 +38,9 @@ def books_inventory_management():
         if number == "1":
             books.add_book()
         elif number == "2":
-            ...
+            books.delete_book()
         else:
-            ...
+            books.search_book()
     else:
         print("Invalid input, please enter 1/2/3.")
 
