@@ -5,7 +5,8 @@ from chapter14.Q7.books import Books
 
 def main():
     while True:
-        option = input("What are you willing to do:\n1. Books Inventory Management\n2. System Readers Management System")
+        option = input(
+            "What would you like to manage:\n1. Books Inventory Management\n2. System Readers Management System")
         if valid_option(option):
             if option == "1":
                 books_inventory_management()
@@ -35,7 +36,7 @@ def books_inventory_management():
     number = input("What would you like to do:\n1. Add new book\n2. delete book\n3. Search book")
     if valid_number(number):
         if number == "1":
-            ...
+            books.add_book()
         elif number == "2":
             ...
         else:
