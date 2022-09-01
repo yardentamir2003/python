@@ -1,5 +1,4 @@
 import re
-
 from chapter14.Q7.books import Books
 
 
@@ -12,7 +11,6 @@ def main():
                 books_inventory_management()
             else:
                 system_readers_management_system()
-
         else:
             print("Invalid input, please enter 1/2.")
 
