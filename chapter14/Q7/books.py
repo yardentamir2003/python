@@ -35,7 +35,7 @@ class Books:
             if len(self.books) == 0:
                 print("The books list is empty. Can't delete books.")
                 return
-            deleted_book = input("Which book would yoe like to delete: ")
+            deleted_book = input("Which book would you like to delete: ")
             for book in self.books:
                 if deleted_book == book.name:
                     self.books.remove(book)
@@ -59,10 +59,7 @@ class Books:
         book_name = input("Enter book name: ")
         for book in self.books:
             if book.name == book_name:
-                if book.shelf_number is not None:
-                    print('The book "{}", is currently on shelf number {}'.format(book_name, book.shelf_number))
-                else:
-                    print('The book "{}", is currently used by {}'.format(book_name, book.reader))
+                print_founded_book(book)
 
     def search_by_author(self):
         author_name = input("Enter author name: ")
@@ -74,11 +71,30 @@ class Books:
             print("Books by {}, weren't found.")
         elif len(books_by_author) == 1:
             matching_book = books_by_author[0]
-            if matching_book.shelf_number is not None:
-                print('The book "{}", is currently on shelf number {}'.format(matching_book.name, matching_book.shelf_number))
-            else:
-                print('The book "{}", is currently used by {}'.format(matching_book.name, matching_book.reader))
+            print_founded_book(matching_book)
         else:
+            for book in books_by_author:
+                print(book.name)
+            while True:
+                selected_book = input("Choose book: ")
+                if selected_book in books_by_author:
+                    break
+                print("Please choose a book from the list above.")
+            index = 0
+            for book in books_by_author:
+                if selected_book == book.name:
+                    break
+                else:
+                    index += 1
+            matching_book = books_by_author[index]
+            print_founded_book(matching_book)
+
+
+def print_founded_book(book):
+    if book.shelf_number is not None:
+        print('The book "{}", is currently on shelf number {}'.format(book.name, book.shelf_number))
+    else:
+        print('The book "{}", is currently used by {}'.format(book.name, book.reader))
 
 
 def valid_shelf_number(shelf_number):
