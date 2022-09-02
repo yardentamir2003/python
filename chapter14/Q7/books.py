@@ -38,10 +38,14 @@ class Books:
             deleted_book = input("Which book would you like to delete: ")
             for book in self.books:
                 if deleted_book == book.name:
-                    self.books.remove(book)
-                    print('OK, the book "{}" was deleted'.format(deleted_book))
-                    return
-            print('"{}" does not exist in the books list.'.format(deleted_book))
+                    delete_copies(book)
+
+
+
+            #         self.books.remove(book)
+            #         print('OK, the book "{}" was deleted'.format(deleted_book))
+            #         return
+            # print('"{}" does not exist in the books list.'.format(deleted_book))
 
     def search_book(self):
         while True:
@@ -59,7 +63,7 @@ class Books:
         book_name = input("Enter book name: ")
         for book in self.books:
             if book.name == book_name:
-                print_founded_book(book)
+                print_book_location(book)
 
     def search_by_author(self):
         author_name = input("Enter author name: ")
@@ -71,7 +75,7 @@ class Books:
             print("Books by {}, weren't found.")
         elif len(books_by_author) == 1:
             matching_book = books_by_author[0]
-            print_founded_book(matching_book)
+            print_book_location(matching_book)
         else:
             for book in books_by_author:
                 print(book.name)
@@ -87,14 +91,24 @@ class Books:
                 else:
                     index += 1
             matching_book = books_by_author[index]
-            print_founded_book(matching_book)
+            print_book_location(matching_book)
 
 
-def print_founded_book(book):
+def print_book_location(book):
     if book.shelf_number is not None:
         print('The book "{}", is currently on shelf number {}'.format(book.name, book.shelf_number))
     else:
         print('The book "{}", is currently used by {}'.format(book.name, book.reader))
+
+
+def delete_copies(book):
+    if book.copies == 0:
+        print("Error, this book has 0 copies.")
+    deleted_copies = input('The book "{}", has {} copies. How many copies would you like to delete: '.format(book.name, book.copies))
+    if deleted_copies > book.copies:
+        print("Please enter number up to {}.".format(book.copies))
+    else:
+        book.copies = book.copies - int(deleted_copies)
 
 
 def valid_shelf_number(shelf_number):
@@ -105,7 +119,7 @@ def valid_shelf_number(shelf_number):
 
 
 def valid_copies_number(copies_number):
-    match = re.findall('^([1-9][0-9]{0,2}|1000)$', copies_number)
+    match = re.findall('^([1-9][0-9]{0,2}|1000|0)$', copies_number)
     if len(match) == 0:
         return False
     return True
