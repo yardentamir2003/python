@@ -18,7 +18,7 @@ class Books:
             if valid_copies_number(copies_number):
                 break
             else:
-                print("Please enter a numeric input between 1-1000.")
+                print("Please enter a numeric input between 0-1000.")
         while True:
             shelf_number = input("Enter book shelf number: ")
             if valid_shelf_number(shelf_number):
@@ -28,9 +28,9 @@ class Books:
         reader = None
         book = Book(book_name, author_name, copies_number, shelf_number, reader)
         self.books.append(book)
+        print('The book "{}", was added successfully.'.format(book.name))
 
     def delete_book(self):
-        # can delete a copy or all copies!
         while True:
             if len(self.books) == 0:
                 print("The books list is empty. Can't delete books.")
@@ -39,17 +39,12 @@ class Books:
             for book in self.books:
                 if deleted_book == book.name:
                     delete_copies(book)
-
-
-
-            #         self.books.remove(book)
-            #         print('OK, the book "{}" was deleted'.format(deleted_book))
-            #         return
-            # print('"{}" does not exist in the books list.'.format(deleted_book))
+                else:
+                    print('"{}" does not exist in the books list.'.format(deleted_book))
 
     def search_book(self):
         while True:
-            option = input("search by:\n1. book name\n2. author name")
+            option = input("search by:\n1. book name\n2. author name\n")
             if valid_option(option):
                 break
             else:
@@ -104,7 +99,10 @@ def print_book_location(book):
 def delete_copies(book):
     if book.copies == 0:
         print("Error, this book has 0 copies.")
-    deleted_copies = input('The book "{}", has {} copies. How many copies would you like to delete: '.format(book.name, book.copies))
+    deleted_copies = input(
+        'The book "{}", has {} copies. How many copies would you like to delete: '.format(book.name, book.copies))
+    if not deleted_copies.isalnum():
+        print("Please enter a numeric input.")
     if deleted_copies > book.copies:
         print("Please enter number up to {}.".format(book.copies))
     else:
@@ -119,7 +117,7 @@ def valid_shelf_number(shelf_number):
 
 
 def valid_copies_number(copies_number):
-    match = re.findall('^([1-9][0-9]{0,2}|1000|0)$', copies_number)
+    match = re.findall('^([1-9]\\d{0,2}|1000|0)$', copies_number)
     if len(match) == 0:
         return False
     return True

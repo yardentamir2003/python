@@ -3,12 +3,13 @@ from chapter14.Q7.books import Books
 
 
 def main():
+    books_manager = Books()
     while True:
         option = input(
-            "What would you like to manage:\n1. Books Inventory Management\n2. System Readers Management System")
+            "What would you like to manage:\n1. Books Inventory Management\n2. System Readers Management System\n")
         if valid_option(option):
             if option == "1":
-                books_inventory_management()
+                books_inventory_management(books_manager)
             else:
                 system_readers_management_system()
         else:
@@ -29,19 +30,21 @@ def valid_number(number):
     return True
 
 
-def books_inventory_management():
-    books = Books()
-    number = input("What would you like to do:\n1. Add new book\n2. delete book\n3. Search book")
+def books_inventory_management(books_manager):
+    number = input("What would you like to do:\n1. Add new book\n2. delete book\n3. Search book\n")
     if valid_number(number):
         if number == "1":
-            books.add_book()
+            books_manager.add_book()
         elif number == "2":
-            books.delete_book()
+            books_manager.delete_book()
         else:
-            books.search_book()
+            books_manager.search_book()
     else:
         print("Invalid input, please enter 1/2/3.")
 
 
 def system_readers_management_system():
     pass
+
+
+main()
