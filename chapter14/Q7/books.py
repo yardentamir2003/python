@@ -39,8 +39,10 @@ class Books:
             for book in self.books:
                 if deleted_book == book.name:
                     delete_copies(book)
+                    return
                 else:
-                    print('"{}" does not exist in the books list.'.format(deleted_book))
+                    print('The book "{}", does not exist in the books list.'.format(deleted_book))
+                    return
 
     def search_book(self):
         while True:
@@ -97,16 +99,27 @@ def print_book_location(book):
 
 
 def delete_copies(book):
-    if book.copies == 0:
+    if book.copies == "0":
         print("Error, this book has 0 copies.")
-    deleted_copies = input(
-        'The book "{}", has {} copies. How many copies would you like to delete: '.format(book.name, book.copies))
-    if not deleted_copies.isalnum():
-        print("Please enter a numeric input.")
-    if deleted_copies > book.copies:
-        print("Please enter number up to {}.".format(book.copies))
-    else:
-        book.copies = book.copies - int(deleted_copies)
+    if book.copies == "1":
+        book.copies = 0
+        print('Ok, book "{}" has 0 copies now.'.format(book.name))
+        return
+    while True:
+        deleted_copies = input(
+            'The book "{}", has {} copies. How many copies would you like to delete: '.format(book.name, book.copies))
+        if not deleted_copies.isnumeric():
+            print("Please enter a numeric input.")
+        if int(deleted_copies) > int(book.copies):
+            print("Please enter number up to {}.".format(book.copies))
+        else:
+            book.copies = int(book.copies) - int(deleted_copies)
+            book.copies = str(book.copies)
+            if book.copies == "1":
+                print('Ok, book "{}" has {} copy now.'.format(book.name, book.copies))
+            else:
+                print('Ok, book "{}" has {} copies now.'.format(book.name, book.copies))
+            return
 
 
 def valid_shelf_number(shelf_number):
