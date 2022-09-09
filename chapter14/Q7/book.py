@@ -7,7 +7,9 @@ class Book:
         self.reader = reader
 
     def borrow_book(self, reader):
-        pass
+        self.copies -= 1
+        self.shelf_number = None
+        self.reader == reader
 
     def return_book(self, reader):
         pass

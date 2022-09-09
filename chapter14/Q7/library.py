@@ -2,7 +2,6 @@
 #     def __init__(self):
 #         self.books =
 #         self.readers =
-#         self.history =
 #         (each of the properties is an object)
 #
 #     def show_books_menu(self):
