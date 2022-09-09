@@ -44,12 +44,7 @@ class Readers:
         pass
 
     def borrow_book(self, book):
-        book_name = input("Enter reader's name: ")
-        for book in
-        reader_name = input("Enter reader's name: ")
-        for reader in self.readers:
-            if reader_name == reader.name:
-                reader.borrow_book(b)
+        pass
 
     def return_book(self):
         pass
