@@ -15,8 +15,7 @@ class Readers:
                 serial_num_list.append(serial_num)
                 break
         name = input("Enter reader's name: ")
-        today = date.today()
-        registration_date = today.strftime("%d/%m/%Y")
+        registration_date = date.today()
         reader = Reader(serial_num, name, registration_date)
         self.readers.append(reader)
         print("Reader {} ({}), was added successfully.".format(name, serial_num))
@@ -33,18 +32,43 @@ class Readers:
         print("Reader {} wasn't found.".format(reader_name))
 
     def list_id_by_name(self):
+        match_list = []
+        reader_name = input("Enter reader's name or part of it: ")
+        for reader in self.readers:
+            if reader_name in reader.name:
+                match_list.append("{} {}".format(reader.name, reader.serial_num))
+        if len(match_list) == 0:
+            print("Readers weren't found.")
+        else:
+            for item in match_list:
+                print(item)
+
+    def list_expired(self):
+        expired_list = []
+        today = date.today()
+        for reader in self.readers:
+            if today - reader.registration_date >= 335:
+                expired_list.append(reader.name)
+        if len(expired_list) == 0:
+            print("Readers whose subscription will expire in less than a month weren't found.")
+        else:
+            print("Readers whose subscription will expire in less than a month are:")
+            for name in expired_list:
+                print(name)
+
+    def borrow_book(self, book):
         reader_name = input("Enter reader's name: ")
         for reader in self.readers:
             if reader_name == reader.name:
-                print(reader.serial_num)
-                return
-        print("Reader {} wasn't found.".format(reader_name))
-
-    def list_expired(self):
-        pass
-
-    def borrow_book(self, book):
-        pass
+                reader.borrow_book()
+                # if date.today - reader.registration_date >= 365:
+                #     print("Reader's subscription has expired")
+                # else:
+                #     book_name = input("Enter book's name: ")
+                #     for book in books:
+                #         if book_name =
+                #     reader.borrow_book()
+                #
 
     def return_book(self):
         pass

@@ -16,7 +16,7 @@ class Reader:
         if len(self.books) == 2:
             print("Reader already borrowed 2 books.")
         else:
-            self.books.append(book)
+            self.books.append(book.name)
 
     def return_book(self):
         pass
