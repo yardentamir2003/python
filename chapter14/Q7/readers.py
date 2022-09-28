@@ -56,19 +56,30 @@ class Readers:
             for name in expired_list:
                 print(name)
 
-    def borrow_book(self, book):
-        reader_name = input("Enter reader's name: ")
+    def ask_for_reader(self):
+        while True:
+            reader = self.search_reader_by_name()
+            if reader is not None:
+                return reader
+            print("Reader was not found.")
+
+    def search_reader_by_name(self):
+        reader_name = input("Enter reader name: ")
         for reader in self.readers:
             if reader_name == reader.name:
-                reader.borrow_book()
-                # if date.today - reader.registration_date >= 365:
-                #     print("Reader's subscription has expired")
-                # else:
-                #     book_name = input("Enter book's name: ")
-                #     for book in books:
-                #         if book_name =
-                #     reader.borrow_book()
-                #
+                return reader
+
+    def start_borrow_book(self, books_manager):
+        reader = self.ask_for_reader()
+        reader.borrow_book_for_reader(books_manager)
+        # if date.today - reader.registration_date >= 365:
+        #     print("Reader's subscription has expired")
+        # else:
+        #     book_name = input("Enter book's name: ")
+        #     for book in books:
+        #         if book_name =
+        #     reader.borrow_book()
+        #
 
     def return_book(self):
         pass

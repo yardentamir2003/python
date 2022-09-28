@@ -9,12 +9,12 @@ def main():
     while True:
         number = input(
             "What would you like to manage:\n1. Books Inventory Management\n2. System Readers Management System\n"
-            "3. quit")
+            "3. quit\n")
         if valid_number(number):
             if number == "1":
                 books_inventory_management(books_manager)
             elif number == "2":
-                system_readers_management_system(readers_manager)
+                system_readers_management_system(readers_manager, books_manager)
             else:
                 print("Ok, have a good one!")
                 return
@@ -49,7 +49,7 @@ def books_inventory_management(books_manager):
         print("Invalid input, please enter 1/2/3.")
 
 
-def system_readers_management_system(readers_manager):
+def system_readers_management_system(readers_manager, books_manager):
     choice = input(
         "What would you like to do:\n1. Add new reader\n2. Add annual payment for a reader ID\n3. Show books by reader "
         "name\n4. Search reader ID by name\n5. List all readers whose subscription will expire in less than a month\n"
@@ -66,7 +66,7 @@ def system_readers_management_system(readers_manager):
         elif choice == "5":
             pass
         elif choice == "6":
-            readers_manager.borrow_book()
+            readers_manager.start_borrow_book(books_manager)
         elif choice == "7":
             readers_manager.return_book()
 

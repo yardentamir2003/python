@@ -12,11 +12,13 @@ class Reader:
             for book in self.books:
                 print(book)
 
-    def borrow_book(self, book):
+    def borrow_book_for_reader(self, books_manager):
+        book = books_manager.ask_for_book()
         if len(self.books) == 2:
             print("Reader already borrowed 2 books.")
         else:
-            self.books.append(book.name)
+            self.books.append(book)
+            book.borrow_book(self)
 
     def return_book(self):
         pass

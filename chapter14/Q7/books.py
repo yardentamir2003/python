@@ -61,6 +61,7 @@ class Books:
         for book in self.books:
             if book.name == book_name:
                 print_book_location(book)
+                return book
 
     def search_by_author(self):
         author_name = input("Enter author name: ")
@@ -89,6 +90,14 @@ class Books:
                     index += 1
             matching_book = books_by_author[index]
             print_book_location(matching_book)
+
+    def ask_for_book(self):
+        while True:
+            book = self.search_by_name()
+            if book is not None:
+                break
+            print("The book was not found.")
+        return book
 
 
 def print_book_location(book):
