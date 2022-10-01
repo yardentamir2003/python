@@ -59,16 +59,22 @@ class Books:
 
     def search_by_name(self):
         book_name = input("Enter book name: ")
+        books_list = []
         for book in self.books:
+            books_list.append(book.name)
             if book.name == book_name:
                 print_book_location(book)
                 return book
+        if book_name not in books_list:
+            print('The book "{}", was not found'.format(book_name))
 
     def search_by_author(self):
         author_name = input("Enter author name: ")
+        book_names_by_author = []
         books_by_author = []
         for book in self.books:
             if book.author_name == author_name:
+                book_names_by_author.append(book.name)
                 books_by_author.append(book)
         if len(books_by_author) == 0:
             print("Books by {}, weren't found.")
@@ -76,11 +82,11 @@ class Books:
             matching_book = books_by_author[0]
             print_book_location(matching_book)
         else:
-            for book in books_by_author:
-                print(book.name)
+            for book in book_names_by_author:
+                print(book)
             while True:
                 selected_book = input("Choose book: ")
-                if selected_book in books_by_author:
+                if selected_book in book_names_by_author:
                     break
                 print("Please choose a book from the list above.")
             index = 0
