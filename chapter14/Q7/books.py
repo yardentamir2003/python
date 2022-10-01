@@ -16,9 +16,10 @@ class Books:
         while True:
             copies_number = input("Enter number of copies: ")
             if valid_copies_number(copies_number):
+                copies_number = int(copies_number)
                 break
             else:
-                print("Please enter a numeric input between 0-1000.")
+                print("Please enter a numeric input between 0-100.")
         while True:
             shelf_number = input("Enter book shelf number: ")
             if valid_shelf_number(shelf_number):
@@ -108,26 +109,26 @@ def print_book_location(book):
 
 
 def delete_copies(book):
-    if book.copies == "0":
+    if book.copies == 0:
         print("Error, this book has 0 copies.")
-    if book.copies == "1":
+    if book.copies == 1:
         book.copies = 0
         print('Ok, book "{}" has 0 copies now.'.format(book.name))
         return
     while True:
         deleted_copies = input(
-            'The book "{}", has {} copies. How many copies would you like to delete: '.format(book.name, book.copies))
+            'The book "{}", has {} copies. How many copies would you like to delete: '.format(book.name,
+                                                                                              str(book.copies)))
         if not deleted_copies.isnumeric():
             print("Please enter a numeric input.")
         if int(deleted_copies) > int(book.copies):
-            print("Please enter number up to {}.".format(book.copies))
+            print("Please enter number up to {}.".format(str(book.copies)))
         else:
-            book.copies = int(book.copies) - int(deleted_copies)
-            book.copies = str(book.copies)
-            if book.copies == "1":
-                print('Ok, book "{}" has {} copy now.'.format(book.name, book.copies))
+            book.copies = book.copies - int(deleted_copies)
+            if book.copies == 1:
+                print('Ok, book "{}" has {} copy now.'.format(book.name, str(book.copies)))
             else:
-                print('Ok, book "{}" has {} copies now.'.format(book.name, book.copies))
+                print('Ok, book "{}" has {} copies now.'.format(book.name, str(book.copies)))
             return
 
 
@@ -139,7 +140,7 @@ def valid_shelf_number(shelf_number):
 
 
 def valid_copies_number(copies_number):
-    match = re.findall('^([1-9]\\d{0,2}|1000|0)$', copies_number)
+    match = re.findall('^[1-9]\\d?$|^100|0$', copies_number)
     if len(match) == 0:
         return False
     return True

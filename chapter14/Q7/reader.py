@@ -20,5 +20,10 @@ class Reader:
             self.books.append(book)
             book.borrow_book(self)
 
-    def return_book(self):
-        pass
+    def return_book_for_reader(self, books_manager):
+        book = books_manager.ask_for_book()
+        if book not in self.books:
+            print("The reader doesn't have this book.")
+        else:
+            self.books.remove(book)
+            book.return_book(self)

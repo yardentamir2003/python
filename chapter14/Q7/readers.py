@@ -81,8 +81,9 @@ class Readers:
         #     reader.borrow_book()
         #
 
-    def return_book(self):
-        pass
+    def start_return_book(self, books_manager):
+        reader = self.ask_for_reader()
+        reader.return_book_for_reader(books_manager)
 
 
 def create_serial_num():
