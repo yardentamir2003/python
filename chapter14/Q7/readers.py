@@ -1,7 +1,7 @@
 from random import randint
 from chapter14.Q7.reader import Reader
 import datetime
-from datetime import datetime, time
+from datetime import datetime
 from datetime import date
 
 
@@ -49,22 +49,25 @@ class Readers:
                 print(item)
 
     def list_expired(self):
-        # check if subscription will expire in less than a month.
-        expired_list = []
-        today = date.today()
-        today_str = today.strftime("%d/%m/%Y")
-        for reader in self.readers:
-            d1 = datetime.strptime(today_str, "%Y/%m/%d")
-            d2 = datetime.strptime(reader.registration_date, "%Y/%m/%d")
-            delta = d2 - d1
-            if delta.days >= 335:
-                expired_list.append(reader.name)
+        expired_list = self.create_expired_list()
         if len(expired_list) == 0:
             print("Readers whose subscription will expire in less than a month weren't found.")
         else:
             print("Readers whose subscription will expire in less than a month are:")
             for name in expired_list:
                 print(name)
+
+    def create_expired_list(self):
+        expired_list = []
+        today = date.today()
+        today_str = today.strftime("%d/%m/%Y")
+        for reader in self.readers:
+            d1 = datetime.strptime(today_str, "%d/%m/%Y")
+            d2 = datetime.strptime(reader.registration_date, "%d/%m/%Y")
+            delta = d2 - d1
+            if int(delta.days) >= 335:
+                expired_list.append(reader.name)
+        return expired_list
 
     def ask_for_reader(self):
         while True:
@@ -80,8 +83,10 @@ class Readers:
                 return reader
 
     def start_borrow_book(self, books_manager):
-        # don't allow borrow book if subscription will expire in less than a month.
+        expired_list = self.create_expired_list()
         reader = self.ask_for_reader()
+        if reader.name in expired_list:
+            print("Reader can't borrow book. subscription will expire in less than a month.")
         reader.borrow_book_for_reader(books_manager)
 
     def start_return_book(self, books_manager):

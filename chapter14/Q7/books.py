@@ -53,7 +53,8 @@ class Books:
             else:
                 print("Invalid input, please enter 1/2.")
         if option == "1":
-            self.search_by_name()
+            book = self.search_by_name()
+            print_book_location(book)
         else:
             self.search_by_author()
 
@@ -63,7 +64,6 @@ class Books:
         for book in self.books:
             books_list.append(book.name)
             if book.name == book_name:
-                print_book_location(book)
                 return book
         if book_name not in books_list:
             print('The book "{}", was not found'.format(book_name))

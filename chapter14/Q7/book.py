@@ -10,6 +10,7 @@ class Book:
         self.copies -= 1
         self.shelf_number = None
         self.reader = reader.name
+        print("Reader {}, borrowed book '{}'.".format(self.reader, self.name))
 
     def return_book(self):
         self.copies += 1
