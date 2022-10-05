@@ -1,6 +1,8 @@
 from random import randint
-from datetime import date
 from chapter14.Q7.reader import Reader
+import datetime
+from datetime import datetime, time
+from datetime import date
 
 
 class Readers:
@@ -15,12 +17,15 @@ class Readers:
                 serial_num_list.append(serial_num)
                 break
         name = input("Enter reader's name: ")
-        registration_date = date.today()
+        today = date.today()
+        registration_date = today.strftime("%d/%m/%Y")
         reader = Reader(serial_num, name, registration_date)
         self.readers.append(reader)
         print("Reader {} ({}), was added successfully.".format(name, serial_num))
 
     def add_payment(self):
+        # add all readers whose subscription will expire in less than a month to pay_list. choose a reader,
+        # pay and remove him from the list.
         pass
 
     def list_reader_books(self):
@@ -44,10 +49,15 @@ class Readers:
                 print(item)
 
     def list_expired(self):
+        # check if subscription will expire in less than a month.
         expired_list = []
         today = date.today()
+        today_str = today.strftime("%d/%m/%Y")
         for reader in self.readers:
-            if today - reader.registration_date >= 335:
+            d1 = datetime.strptime(today_str, "%Y/%m/%d")
+            d2 = datetime.strptime(reader.registration_date, "%Y/%m/%d")
+            delta = d2 - d1
+            if delta.days >= 335:
                 expired_list.append(reader.name)
         if len(expired_list) == 0:
             print("Readers whose subscription will expire in less than a month weren't found.")
@@ -70,16 +80,9 @@ class Readers:
                 return reader
 
     def start_borrow_book(self, books_manager):
+        # don't allow borrow book if subscription will expire in less than a month.
         reader = self.ask_for_reader()
         reader.borrow_book_for_reader(books_manager)
-        # if date.today - reader.registration_date >= 365:
-        #     print("Reader's subscription has expired")
-        # else:
-        #     book_name = input("Enter book's name: ")
-        #     for book in books:
-        #         if book_name =
-        #     reader.borrow_book()
-        #
 
     def start_return_book(self, books_manager):
         reader = self.ask_for_reader()
