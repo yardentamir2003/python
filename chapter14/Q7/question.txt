@@ -8,7 +8,7 @@ Books Inventory Management System
 Readers Management System
 
 For the books management the following is required:
-Add new book (book name, author name, number of copies, book shelf number)
+Add new book (book name, author name, number of copies, bookshelf number)
 Delete book copy or all copies of the book
 Search book by name, or by author - prints the book location or the reader if it is used
 

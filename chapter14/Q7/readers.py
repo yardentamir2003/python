@@ -24,9 +24,18 @@ class Readers:
         print("Reader {} ({}), was added successfully.".format(name, serial_num))
 
     def add_payment(self):
-        # add all readers whose subscription will expire in less than a month to pay_list. choose a reader,
-        # pay and remove him from the list.
-        pass
+        expired_list = self.create_expired_list()
+        print("Readers that must pay in order to renew their subscription are:")
+        for reader in expired_list:
+            print(reader)
+        while True:
+            paying_reader = input("Who is paying?")
+            if paying_reader not in expired_list:
+                print("Please choose reader from the list above.")
+            else:
+                expired_list.remove(paying_reader)
+                print("{} renewed subscription successfully.".format(paying_reader))
+                return expired_list
 
     def list_reader_books(self):
         reader_name = input("Enter reader's name: ")
@@ -51,9 +60,9 @@ class Readers:
     def list_expired(self):
         expired_list = self.create_expired_list()
         if len(expired_list) == 0:
-            print("Readers whose subscription will expire in less than a month weren't found.")
+            print("Readers whose subscription is expired weren't found.")
         else:
-            print("Readers whose subscription will expire in less than a month are:")
+            print("Readers whose subscription is expired are:")
             for name in expired_list:
                 print(name)
 
@@ -65,7 +74,7 @@ class Readers:
             d1 = datetime.strptime(today_str, "%d/%m/%Y")
             d2 = datetime.strptime(reader.registration_date, "%d/%m/%Y")
             delta = d2 - d1
-            if int(delta.days) >= 335:
+            if int(delta.days) >= 365:
                 expired_list.append(reader.name)
         return expired_list
 
