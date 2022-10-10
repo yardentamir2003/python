@@ -1,3 +1,4 @@
+import json
 import re
 from chapter14.Q7.book import Book
 
@@ -29,6 +30,7 @@ class Books:
         reader = None
         book = Book(book_name, author_name, copies_number, shelf_number, reader)
         self.books.append(book)
+        self.save_to_file()
         print('The book "{}", was added successfully.'.format(book.name))
 
     def delete_book(self):
@@ -40,6 +42,7 @@ class Books:
             for book in self.books:
                 if deleted_book == book.name:
                     delete_copies(book)
+                    self.save_to_file()
                     return
                 else:
                     print('The book "{}", does not exist in the books list.'.format(deleted_book))
@@ -105,6 +108,27 @@ class Books:
                 break
             print("The book was not found.")
         return book
+
+    def save_to_file(self):
+        jsons_list = []
+        for book in self.books:
+            jsons_list.append(book.get_json())
+        with open("books.json", "w") as file:
+            json.dump(jsons_list, file)
+
+    def load_from_file(self):
+        with open("books.json", "r") as file:
+            jsons_list = json.load(file)
+        for item in jsons_list:
+            book_name = item["name"]
+            author_name = item["author_name"]
+            copies_number = item["copies_number"]
+            shelf_number = item["shelf_number"]
+            reader = item["reader"]
+            book = Book(book_name, author_name, copies_number, shelf_number, reader)
+            self.books.append(book)
+
+
 
 
 def print_book_location(book):

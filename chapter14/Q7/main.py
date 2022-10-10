@@ -6,6 +6,7 @@ from chapter14.Q7.readers import Readers
 def main():
     books_manager = Books()
     readers_manager = Readers()
+    books_manager.load_from_file()
     while True:
         number = input(
             "What would you like to manage:\n1. Books Inventory Management\n2. System Readers Management System\n"

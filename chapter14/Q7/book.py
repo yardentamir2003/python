@@ -16,3 +16,12 @@ class Book:
         self.copies += 1
         self.shelf_number = "A1"
         self.reader = None
+
+    def get_json(self):
+        return {
+            "name": self.name,
+            "author_name": self.author_name,
+            "copies": self.copies,
+            "shelf_number": self.shelf_number,
+            "reader": self.reader
+        }
