@@ -1,9 +1,9 @@
 class Reader:
-    def __init__(self, serial_num, name, registration_date):
+    def __init__(self, serial_num, name, registration_date, books):
         self.serial_num = serial_num
         self.name = name
         self.registration_date = registration_date
-        self.books = []
+        self.books = books
 
     def list_books(self):
         if len(self.books) == 0:
@@ -27,3 +27,11 @@ class Reader:
         else:
             self.books.remove(book)
             book.return_book(self)
+
+    def get_json(self):
+        return {
+            "serial_num": self.serial_num,
+            "name": self.name,
+            "registration_date": self.registration_date,
+            "books": self.books
+        }

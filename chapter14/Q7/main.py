@@ -1,21 +1,20 @@
 import re
-from chapter14.Q7.books import Books
-from chapter14.Q7.readers import Readers
+from chapter14.Q7.library import Library
 
 
 def main():
-    books_manager = Books()
-    readers_manager = Readers()
-    books_manager.load_from_file()
+    library = Library()
+    library.books.load_from_file()
+    library.readers.load_from_file()
     while True:
         number = input(
             "What would you like to manage:\n1. Books Inventory Management\n2. System Readers Management System\n"
             "3. quit\n")
         if valid_number(number):
             if number == "1":
-                books_inventory_management(books_manager)
+                books_inventory_management(library.books)
             elif number == "2":
-                system_readers_management_system(readers_manager, books_manager)
+                system_readers_management_system(library.readers, library.books)
             else:
                 print("Ok, have a good one!")
                 return

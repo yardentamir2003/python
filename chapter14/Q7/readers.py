@@ -1,3 +1,4 @@
+import json
 from random import randint
 from chapter14.Q7.reader import Reader
 import datetime
@@ -19,8 +20,10 @@ class Readers:
         name = input("Enter reader's name: ")
         today = date.today()
         registration_date = today.strftime("%d/%m/%Y")
-        reader = Reader(serial_num, name, registration_date)
+        books = []
+        reader = Reader(serial_num, name, registration_date, books)
         self.readers.append(reader)
+        self.save_to_file()
         print("Reader {} ({}), was added successfully.".format(name, serial_num))
 
     def add_payment(self):
@@ -97,10 +100,30 @@ class Readers:
         if reader.name in expired_list:
             print("Reader can't borrow book. subscription will expire in less than a month.")
         reader.borrow_book_for_reader(books_manager)
+        self.save_to_file()
 
     def start_return_book(self, books_manager):
         reader = self.ask_for_reader()
         reader.return_book_for_reader(books_manager)
+        self.save_to_file()
+
+    def save_to_file(self):
+        jsons_list = []
+        for reader in self.readers:
+            jsons_list.append(reader.get_json())
+        with open("readers.json", "w") as file:
+            json.dump(jsons_list, file)
+
+    def load_from_file(self):
+        with open("readers.json", "r") as file:
+            json_list = json.load(file)
+        for item in json_list:
+            serial_num = item["serial_num"]
+            name = item["name"]
+            registration_date = item["registration_date"]
+            books = item["books"]
+            reader = Reader(serial_num, name, registration_date, books)
+            self.readers.append(reader)
 
 
 def create_serial_num():

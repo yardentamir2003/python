@@ -129,8 +129,6 @@ class Books:
             self.books.append(book)
 
 
-
-
 def print_book_location(book):
     if book.shelf_number is not None:
         print('The book "{}", is currently on shelf number {}'.format(book.name, book.shelf_number))
