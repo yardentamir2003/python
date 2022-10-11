@@ -1,6 +1,7 @@
 import json
 import re
 from chapter14.Q7.book import Book
+import os.path
 
 
 class Books:
@@ -57,7 +58,9 @@ class Books:
                 print("Invalid input, please enter 1/2.")
         if option == "1":
             book = self.search_by_name()
-            print_book_location(book)
+            if book is not None:
+                print_book_location(book)
+            return
         else:
             self.search_by_author()
 
@@ -70,6 +73,7 @@ class Books:
                 return book
         if book_name not in books_list:
             print('The book "{}", was not found'.format(book_name))
+            return
 
     def search_by_author(self):
         author_name = input("Enter author name: ")
@@ -80,7 +84,7 @@ class Books:
                 book_names_by_author.append(book.name)
                 books_by_author.append(book)
         if len(books_by_author) == 0:
-            print("Books by {}, weren't found.")
+            print("Books by {}, weren't found.".format(author_name))
         elif len(books_by_author) == 1:
             matching_book = books_by_author[0]
             print_book_location(matching_book)
@@ -117,16 +121,19 @@ class Books:
             json.dump(jsons_list, file)
 
     def load_from_file(self):
-        with open("books.json", "r") as file:
-            jsons_list = json.load(file)
-        for item in jsons_list:
-            book_name = item["name"]
-            author_name = item["author_name"]
-            copies_number = item["copies_number"]
-            shelf_number = item["shelf_number"]
-            reader = item["reader"]
-            book = Book(book_name, author_name, copies_number, shelf_number, reader)
-            self.books.append(book)
+        if os.path.isfile("books.json"):
+            with open("books.json", "r") as file:
+                jsons_list = json.load(file)
+            for item in jsons_list:
+                book_name = item["name"]
+                author_name = item["author_name"]
+                copies = item["copies"]
+                shelf_number = item["shelf_number"]
+                reader = item["reader"]
+                book = Book(book_name, author_name, copies, shelf_number, reader)
+                self.books.append(book)
+        else:
+            self.books = []
 
 
 def print_book_location(book):

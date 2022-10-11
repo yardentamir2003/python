@@ -4,6 +4,7 @@ from chapter14.Q7.reader import Reader
 import datetime
 from datetime import datetime
 from datetime import date
+import os.path
 
 
 class Readers:
@@ -28,6 +29,9 @@ class Readers:
 
     def add_payment(self):
         expired_list = self.create_expired_list()
+        if len(expired_list) == 0:
+            print("All subscriptions are operative.")
+            return
         print("Readers that must pay in order to renew their subscription are:")
         for reader in expired_list:
             print(reader)
@@ -115,15 +119,18 @@ class Readers:
             json.dump(jsons_list, file)
 
     def load_from_file(self):
-        with open("readers.json", "r") as file:
-            json_list = json.load(file)
-        for item in json_list:
-            serial_num = item["serial_num"]
-            name = item["name"]
-            registration_date = item["registration_date"]
-            books = item["books"]
-            reader = Reader(serial_num, name, registration_date, books)
-            self.readers.append(reader)
+        if os.path.isfile("readers.json"):
+            with open("readers.json", "r") as file:
+                json_list = json.load(file)
+            for item in json_list:
+                serial_num = item["serial_num"]
+                name = item["name"]
+                registration_date = item["registration_date"]
+                books = item["books"]
+                reader = Reader(serial_num, name, registration_date, books)
+                self.readers.append(reader)
+        else:
+            self.readers = []
 
 
 def create_serial_num():

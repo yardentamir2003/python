@@ -1,8 +1,8 @@
 class Book:
-    def __init__(self, book_name, author_name, copies_number, shelf_number, reader):
+    def __init__(self, book_name, author_name, copies, shelf_number, reader):
         self.name = book_name
         self.author_name = author_name
-        self.copies = copies_number
+        self.copies = copies
         self.shelf_number = shelf_number
         self.reader = reader
 
@@ -16,6 +16,7 @@ class Book:
         self.copies += 1
         self.shelf_number = "A1"
         self.reader = None
+        print("Reader {}, returned book '{}'.".format(self.reader, self.name))
 
     def get_json(self):
         return {
