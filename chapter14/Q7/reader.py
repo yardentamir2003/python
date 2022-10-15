@@ -17,8 +17,11 @@ class Reader:
         if len(self.books) == 2:
             print("Reader already borrowed 2 books.")
         else:
-            self.books.append(book.name)
-            book.borrow_book()
+            if book.copies == 0:
+                print("There are no available copies of {}".format(book.name))
+            else:
+                self.books.append(book.name)
+                book.borrow_book(self)
 
     def return_book_for_reader(self, books_manager):
         book = books_manager.ask_for_book()
@@ -26,7 +29,7 @@ class Reader:
             print("The reader doesn't have this book.")
         else:
             self.books.remove(book.name)
-            book.return_book()
+            book.return_book(self)
 
     def get_json(self):
         return {
