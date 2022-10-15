@@ -1,12 +1,10 @@
-def double_letter(letter):
-    return letter * 2
+# def duplicate(letter):
+#     return letter * 2
 
 
-def split_str(my_str):
-    letter_list = list(my_str)
-    result = map(double_letter, letter_list)
-    result = list(result)
-    return "".join(result)
+def double_letter(my_str):
+    # return "".join(list(map(duplicate, list(my_str))))
+    return "".join(list(map(lambda letter: letter*2, list(my_str))))
 
 
-print(split_str("python"))
+print(double_letter("python"))

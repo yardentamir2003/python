@@ -104,7 +104,6 @@ class Readers:
         if reader.name in expired_list:
             print("Reader can't borrow book. subscription will expire in less than a month.")
         reader.borrow_book_for_reader(books_manager)
-        self.save_to_file()
 
     def start_return_book(self, books_manager):
         reader = self.ask_for_reader()

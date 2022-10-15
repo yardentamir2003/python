@@ -44,6 +44,8 @@ class Library:
                 self.readers.start_borrow_book(self.books)
             elif choice == "7":
                 self.readers.start_return_book(self.books)
+            self.books.save_to_file()
+            self.readers.save_to_file()
         else:
             print("Please enter a number between 1-7.")
 

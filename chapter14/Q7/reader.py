@@ -17,7 +17,7 @@ class Reader:
         if len(self.books) == 2:
             print("Reader already borrowed 2 books.")
         else:
-            self.books.append(book)
+            self.books.append(book.name)
             book.borrow_book(self)
 
     def return_book_for_reader(self, books_manager):
@@ -25,7 +25,7 @@ class Reader:
         if book not in self.books:
             print("The reader doesn't have this book.")
         else:
-            self.books.remove(book)
+            self.books.remove(book.name)
             book.return_book(self)
 
     def get_json(self):
