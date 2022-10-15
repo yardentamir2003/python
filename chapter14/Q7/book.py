@@ -15,8 +15,8 @@ class Book:
     def return_book(self):
         self.copies += 1
         self.shelf_number = "A1"
-        self.reader = None
         print("Reader {}, returned book '{}'.".format(self.reader, self.name))
+        self.reader = None
 
     def get_json(self):
         return {

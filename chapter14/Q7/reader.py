@@ -18,15 +18,15 @@ class Reader:
             print("Reader already borrowed 2 books.")
         else:
             self.books.append(book.name)
-            book.borrow_book(self)
+            book.borrow_book()
 
     def return_book_for_reader(self, books_manager):
         book = books_manager.ask_for_book()
-        if book not in self.books:
+        if book.name not in self.books:
             print("The reader doesn't have this book.")
         else:
             self.books.remove(book.name)
-            book.return_book(self)
+            book.return_book()
 
     def get_json(self):
         return {

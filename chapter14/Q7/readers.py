@@ -108,7 +108,6 @@ class Readers:
     def start_return_book(self, books_manager):
         reader = self.ask_for_reader()
         reader.return_book_for_reader(books_manager)
-        self.save_to_file()
 
     def save_to_file(self):
         jsons_list = []
