@@ -34,15 +34,20 @@ class Readers:
             return
         print("Readers that must pay in order to renew their subscription are:")
         for reader in expired_list:
-            print(reader)
+            print(reader.name)
         while True:
-            paying_reader = input("Who is paying?")
-            if paying_reader not in expired_list:
-                print("Please choose reader from the list above.")
-            else:
-                expired_list.remove(paying_reader)
-                print("{} renewed subscription successfully.".format(paying_reader))
-                return expired_list
+            paying_reader = input("Who is paying? ")
+            for reader in expired_list:
+                if reader.name == paying_reader:
+                    expired_list.remove(reader)
+                    today = date.today()
+                    registration_date = today.strftime("%d/%m/%Y")
+                    reader.registration_date = registration_date
+                    self.save_to_file()
+                    print("Subscription renewed successfully.")
+                    return
+                else:
+                    print("Please choose reader from the list above.")
 
     def list_reader_books(self):
         reader_name = input("Enter reader's name: ")
@@ -70,8 +75,8 @@ class Readers:
             print("Readers whose subscription is expired weren't found.")
         else:
             print("Readers whose subscription is expired are:")
-            for name in expired_list:
-                print(name)
+            for reader in expired_list:
+                print(reader.name)
 
     def create_expired_list(self):
         expired_list = []
@@ -80,9 +85,9 @@ class Readers:
         for reader in self.readers:
             d1 = datetime.strptime(today_str, "%d/%m/%Y")
             d2 = datetime.strptime(reader.registration_date, "%d/%m/%Y")
-            delta = d2 - d1
+            delta = d1 - d2
             if int(delta.days) >= 365:
-                expired_list.append(reader.name)
+                expired_list.append(reader)
         return expired_list
 
     def ask_for_reader(self):
