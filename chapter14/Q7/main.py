@@ -4,8 +4,7 @@ from chapter14.Q7.library import Library
 
 def main():
     library = Library()
-    library.books.load_from_file()
-    library.readers.load_from_file()
+    library.load_all_from_files()
     while True:
         number = input(
             "What would you like to manage:\n1. Books Inventory Management\n2. System Readers Management System\n"
@@ -27,6 +26,10 @@ def valid_number(number):
     if len(match) == 0:
         return False
     return True
+
+
+def print_blessing():
+    print("Have a good day!")
 
 
 main()

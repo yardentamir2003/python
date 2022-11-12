@@ -29,7 +29,7 @@ class Reader:
             print("The reader doesn't have this book.")
         else:
             self.books.remove(book.name)
-            book.return_book(self)
+            book.return_book()
 
     def get_json(self):
         return {

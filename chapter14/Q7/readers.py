@@ -36,9 +36,9 @@ class Readers:
         for reader in expired_list:
             print(reader.name)
         while True:
-            paying_reader = input("Who is paying? ")
+            paying_reader_num = input("Enter the paying reader's serial number: ")
             for reader in expired_list:
-                if reader.name == paying_reader:
+                if reader.serial_num == paying_reader_num:
                     expired_list.remove(reader)
                     today = date.today()
                     registration_date = today.strftime("%d/%m/%Y")
@@ -50,12 +50,12 @@ class Readers:
                     print("Please choose reader from the list above.")
 
     def list_reader_books(self):
-        reader_name = input("Enter reader's name: ")
+        reader_serial_num = int(input("Enter reader's serial number: "))
         for reader in self.readers:
-            if reader_name == reader.name:
+            if reader_serial_num == reader.serial_num:
                 reader.list_books()
                 return
-        print("Reader {} wasn't found.".format(reader_name))
+        print("Reader {} wasn't found.".format(reader_serial_num))
 
     def list_id_by_name(self):
         match_list = []
@@ -76,7 +76,7 @@ class Readers:
         else:
             print("Readers whose subscription is expired are:")
             for reader in expired_list:
-                print(reader.name)
+                print(reader.name, reader.serial_num)
 
     def create_expired_list(self):
         expired_list = []
@@ -97,17 +97,34 @@ class Readers:
                 return reader
             print("Reader was not found.")
 
+    def ask_for_reader_id(self):
+        while True:
+            serial_num = input("Enter reader's serial number: ")
+            for reader in self.readers:
+                if serial_num == str(reader.serial_num):
+                    return reader
+            print("Serial number was not found.")
+
     def search_reader_by_name(self):
-        reader_name = input("Enter reader name: ")
+        reader_name = input("Enter reader name or part of it: ")
+        match_list = []
         for reader in self.readers:
             if reader_name == reader.name:
                 return reader
+            if reader_name in reader.name:
+                match_list.append(reader)
+        if len(match_list) == 1:
+            return match_list[0]
+        else:
+            reader = choose_specific_reader(match_list)
+            return reader
 
     def start_borrow_book(self, books_manager):
         expired_list = self.create_expired_list()
-        reader = self.ask_for_reader()
+        reader = self.ask_for_reader_id()
         if reader.name in expired_list:
-            print("Reader can't borrow book. subscription will expire in less than a month.")
+            print("Reader can't borrow book. subscription is expired.")
+            return
         reader.borrow_book_for_reader(books_manager)
 
     def start_return_book(self, books_manager):
@@ -140,3 +157,14 @@ def create_serial_num():
     range_start = 10 ** 6
     range_end = (10 ** 7) - 1
     return randint(range_start, range_end)
+
+
+def choose_specific_reader(match_list):
+    for reader in match_list:
+        print(reader.name)
+    while True:
+        specific_reader = input("Choose a reader.")
+        for reader in match_list:
+            if specific_reader == reader.name:
+                return reader
+        print("Please choose from the list above.")

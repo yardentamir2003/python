@@ -28,26 +28,25 @@ class Books:
                 break
             else:
                 print("Please enter a year in format XD.")
-        reader = None
-        book = Book(book_name, author_name, copies_number, shelf_number, reader)
+        readers = []
+        book = Book(book_name, author_name, copies_number, shelf_number, readers)
         self.books.append(book)
         self.save_to_file()
         print('The book "{}", was added successfully.'.format(book.name))
 
     def delete_book(self):
-        while True:
-            if len(self.books) == 0:
-                print("The books list is empty. Can't delete books.")
+        if len(self.books) == 0:
+            print("The books list is empty. Can't delete books.")
+            return
+        deleted_book = input("Which book would you like to delete: ")
+        for book in self.books:
+            if deleted_book == book.name:
+                delete_copies(book)
+                self.save_to_file()
                 return
-            deleted_book = input("Which book would you like to delete: ")
-            for book in self.books:
-                if deleted_book == book.name:
-                    delete_copies(book)
-                    self.save_to_file()
-                    return
-                else:
-                    print('The book "{}", does not exist in the books list.'.format(deleted_book))
-                    return
+            else:
+                print('The book "{}", does not exist in the books list.'.format(deleted_book))
+                return
 
     def search_book(self):
         while True:
@@ -103,6 +102,9 @@ class Books:
                 else:
                     index += 1
             matching_book = books_by_author[index]
+            for book in self.books:
+                if book.name == matching_book:
+                    matching_book = book
             print_book_location(matching_book)
 
     def ask_for_book(self):
@@ -129,18 +131,26 @@ class Books:
                 author_name = item["author_name"]
                 copies = item["copies"]
                 shelf_number = item["shelf_number"]
-                reader = item["reader"]
-                book = Book(book_name, author_name, copies, shelf_number, reader)
+                readers = item["readers"]
+                book = Book(book_name, author_name, copies, shelf_number, readers)
                 self.books.append(book)
         else:
             self.books = []
 
 
 def print_book_location(book):
-    if book.shelf_number is not None:
+    if len(book.readers) == 0:
         print('The book "{}", is currently on shelf number {}'.format(book.name, book.shelf_number))
     else:
-        print('The book "{}", is currently used by {}'.format(book.name, book.reader))
+        print('The book "{}", is currently used by: '.format(book.name, book.readers))
+        for reader in book.readers:
+            print(reader)
+
+    available_copies = str(book.copies)
+    if available_copies == "0":
+        print("There are no available copies.")
+    else:
+        print("There are {} available copies on shelf number {}.".format(available_copies, book.shelf_number))
 
 
 def delete_copies(book):
