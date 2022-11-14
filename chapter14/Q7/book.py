@@ -8,8 +8,6 @@ class Book:
 
     def borrow_book(self, reader):
         self.copies -= 1
-        if self.copies == 0:
-            self.shelf_number = None
         self.readers.append(reader.name)
         print("Reader {}, borrowed book '{}'.".format(reader.name, self.name))
 

@@ -128,7 +128,7 @@ class Readers:
         reader.borrow_book_for_reader(books_manager)
 
     def start_return_book(self, books_manager):
-        reader = self.ask_for_reader()
+        reader = self.ask_for_reader_id()
         reader.return_book_for_reader(books_manager)
 
     def save_to_file(self):

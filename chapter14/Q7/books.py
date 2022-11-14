@@ -21,7 +21,7 @@ class Books:
                 copies_number = int(copies_number)
                 break
             else:
-                print("Please enter a numeric input between 0-100.")
+                print("Please enter a numeric input between 1-100.")
         while True:
             shelf_number = input("Enter book shelf number: ")
             if valid_shelf_number(shelf_number):
@@ -185,7 +185,7 @@ def valid_shelf_number(shelf_number):
 
 
 def valid_copies_number(copies_number):
-    match = re.findall('^[1-9]\\d?$|^100|0$', copies_number)
+    match = re.findall('^[1-9]\\d?$|^100$', copies_number)
     if len(match) == 0:
         return False
     return True
