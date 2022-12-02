@@ -1,4 +1,4 @@
-from datetime import datetime, time
+from datetime import datetime
 from datetime import date
 
 today = date.today()
@@ -11,5 +11,3 @@ d2 = datetime.strptime(str_d2, "%Y/%m/%d")
 
 delta = d2 - d1
 print(f'Difference is {delta.days} days')
-
-
