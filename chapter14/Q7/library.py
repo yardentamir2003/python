@@ -23,7 +23,7 @@ class Library:
         menu.add_option("Add annual payment for a reader ID", self.readers.add_payment)
         menu.add_option("Show books by reader", self.readers.list_reader_books)
         menu.add_option("Search reader ID by name", self.readers.list_id_by_name)
-        menu.add_option("List all readers whose subscription is expired", self.readers.list_expired())
+        menu.add_option("List all readers whose subscription is expired", self.readers.list_expired)
         menu.add_option("Borrow book", self.all_borrow_book)
         menu.add_option("Return book", self.all_return_book)
         menu.show_menu()
