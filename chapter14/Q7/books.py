@@ -44,9 +44,9 @@ class Books:
                 delete_copies(book)
                 self.save_to_file()
                 return
-            else:
-                print('The book "{}", does not exist in the books list.'.format(deleted_book))
-                return
+
+        print('The book "{}", does not exist in the books list.'.format(deleted_book))
+        return
 
     def search_book(self):
         while True:
@@ -156,6 +156,7 @@ def print_book_location(book):
 def delete_copies(book):
     if book.copies == 0:
         print("Error, this book has 0 copies.")
+        return
     if book.copies == 1:
         book.copies = 0
         print('Ok, book "{}" has 0 copies now.'.format(book.name))
