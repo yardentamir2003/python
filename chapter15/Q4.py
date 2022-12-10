@@ -15,7 +15,8 @@ visitors = Visitors()
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, you are visitor number {}<a href='/1'> here</a></p>".format(visitors.visitors)
+    visitors.add()
+    return "<p>Hello, you are visitor number {}.<a></a></p>".format(visitors.visitors)
 
 
 @app.route("/1")
