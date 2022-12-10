@@ -19,10 +19,4 @@ def hello_world():
     return "<p>Hello, you are visitor number {}.<a></a></p>".format(visitors.visitors)
 
 
-@app.route("/1")
-def yarden():
-    visitors.add()
-
-
-
 app.run()
