@@ -1,14 +1,5 @@
 from flask import Flask
 
-
-class Bank:
-    def __init__(self):
-        self.balance = 0
-
-    def add(self):
-        self.balance += 1
-
-
 app = Flask(__name__)
 
 
