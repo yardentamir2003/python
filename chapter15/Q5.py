@@ -6,33 +6,27 @@ class Visitors:
         self.visitors_list = []
 
     def add_visitor(self, visitor):
-        self.visitors.append(visitor)
+        self.visitors_list.append(visitor)
 
 
 app = Flask(__name__)
-# visitors = Visitors()
+visitors = Visitors()
 
 
 @app.route("/")
 def hello_visitors():
-    visitors = Visitors()
-    visitor = request.args.get('visitor')
+    visitor = request.args.get('name')
     visitors.add_visitor(visitor)
     visitors_str = ""
     for visitor in visitors.visitors_list:
-
-        if len(visitors_str) == 0:
-            visitors_str = visitors_str + visitor
-
+        if visitor in visitors_str:
+            continue
         else:
-            if visitor in visitors_str:
-                continue
-            else:
-                visitors_str = visitors_str + visitor + "and"
+            visitors_str = visitors_str + visitor + " and "
 
-    visitors_str = visitors_str[:-3]
+    visitors_str = visitors_str[:-4]
 
-    return "<p>Hello, you are visitor number {}.<a></a></p>".format(visitors.visitors)
+    return "<p>Hello {}<a></a></p>".format(visitors_str)
 
 
 app.run()
